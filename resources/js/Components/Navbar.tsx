@@ -287,28 +287,28 @@ export default function Navbar() {
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
-              <span className="text-xs">หน้าหลัก</span>
+              <span className="text-xs">ໜ້າຫຼັກ</span>
             </Link>
             
             <Link href={route('products.index')} className="flex flex-col items-center p-2 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
               </svg>
-              <span className="text-xs">สินค้า</span>
+              <span className="text-xs">ສິນຄ້າ</span>
             </Link>
             
             <Link href={route('orders.index')} className="flex flex-col items-center p-2 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-              <span className="text-xs">คำสั่งซื้อ</span>
+              <span className="text-xs">ຄໍາສັ່ງຊື້</span>
             </Link>
             
             <Link href={route('purchases.index')} className="flex flex-col items-center p-2 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              <span className="text-xs">การซื้อ</span>
+              <span className="text-xs">ການຊື້</span>
             </Link>
           </div>
 
@@ -321,7 +321,7 @@ export default function Navbar() {
                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
-            แดชบอร์ด
+            ແດດບອດ
           </Link>
 
           <Link
@@ -332,7 +332,7 @@ export default function Navbar() {
                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
-            สินค้า
+            ສິນຄ້າ
           </Link>
 
           {/* Mobile Orders submenu */}
@@ -355,7 +355,7 @@ export default function Navbar() {
                   <path d="M21 10l-2 8a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2l-2 -8z" />
                   <path d="M12 15m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                 </svg>
-                คำสั่งซื้อ
+                ຄຳສັ່ງຊື້
               </span>
               <svg
                 className={`w-5 h-5 transition-transform ${ordersDropdownOpen ? 'transform rotate-180' : ''}`}
@@ -373,25 +373,25 @@ export default function Navbar() {
                   href={route('orders.index')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  ทั้งหมด
+                  ທັງໝົດ
                 </Link>
                 <Link
                   href={route('orders.complete')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  เสร็จสิ้น
+                  ສຳເລັດ
                 </Link>
                 <Link
                   href={route('orders.pending')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  รอดำเนินการ
+                  ຖ້າດຳເນິນການ
                 </Link>
                 <Link
                   href={route('due.index')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  ค้างชำระ
+                  ຄ້າງຊຳລະ
                 </Link>
               </div>
             )}
@@ -418,7 +418,7 @@ export default function Navbar() {
                   <path d="M7 15h.01" />
                   <path d="M11 15h2" />
                 </svg>
-                การซื้อ
+                ການຊື້
               </span>
               <svg
                 className={`w-5 h-5 transition-transform ${purchasesDropdownOpen ? 'transform rotate-180' : ''}`}
@@ -436,19 +436,19 @@ export default function Navbar() {
                   href={route('purchases.index')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  ทั้งหมด
+                  ທັງໝົດ
                 </Link>
                 <Link
                   href={route('purchases.approvedPurchases')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  อนุมัติ
+                  ອະນຸມັດ
                 </Link>
                 <Link
                   href={route('purchases.dailyPurchaseReport')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  รายงานการซื้อประจำวัน
+                  ລາຍງານການຊື້ປະຈຳວັນ
                 </Link>
               </div>
             )}
@@ -462,7 +462,7 @@ export default function Navbar() {
                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
-            ใบเสนอราคา
+            ໃບສະເໜີລາຄາ
           </Link>
 
           {/* Mobile Pages submenu */}
@@ -484,7 +484,7 @@ export default function Navbar() {
                   <path d="M8 4m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z" />
                   <path d="M16 16v2a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h2" />
                 </svg>
-                เพจ
+                ເພສ
               </span>
               <svg
                 className={`w-5 h-5 transition-transform ${pagesDropdownOpen ? 'transform rotate-180' : ''}`}
@@ -502,13 +502,13 @@ export default function Navbar() {
                   href={route('suppliers.index')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  ซัพพลายเออร์
+                  ຊັບພາຍເອີ
                 </Link>
                 <Link
                   href={route('customers.index')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  ลูกค้า
+                  ລູກຄ້າ
                 </Link>
               </div>
             )}
@@ -533,7 +533,7 @@ export default function Navbar() {
                   <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
                   <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
                 </svg>
-                ตั้งค่า
+                ຕັ້ງຄ່າ
               </span>
               <svg
                 className={`w-5 h-5 transition-transform ${settingsDropdownOpen ? 'transform rotate-180' : ''}`}
@@ -551,19 +551,19 @@ export default function Navbar() {
                   href={route('users.index')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  ผู้ใช้
+                  ຜູ້ໃຊ້
                 </Link>
                 <Link
                   href={route('categories.index')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  หมวดหมู่
+                  ໝວດໝູ່
                 </Link>
                 <Link
                   href={route('units.index')}
                   className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
-                  หน่วย
+                  ຫົວໜ່ວຍ
                 </Link>
               </div>
             )}

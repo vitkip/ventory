@@ -76,7 +76,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
     due_date: quotation.due_date,
     reference: quotation.reference,
     notes: quotation.notes || '',
-    terms: quotation.terms || 'ราคานี้มีผลเป็นเวลา 30 วันนับจากวันที่ในใบเสนอราคา',
+    terms: quotation.terms || 'ລາຄານີ້ມີຜົນເປັນເວລາ 30 ວັນນັບຈາກວັນທີໃນໃບສະເໜີລາຄາ',
     status: quotation.status.toString(),
     discount_type: quotation.discount_type || 'fixed',
     discount_value: quotation.discount_value.toString() || '0',
@@ -224,7 +224,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
     e.preventDefault()
     
     if (items.length === 0) {
-      alert('กรุณาเพิ่มสินค้าอย่างน้อย 1 รายการ')
+      alert('ກະລຸນາເພີມສິນຄ້າຢ່າງນ້ອຍ 1 ລາຍການ')
       return
     }
     
@@ -241,9 +241,9 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'ใบเสนอราคา', url: route('quotations.index') },
-    { title: 'แก้ไข', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ໃບສະເໜີລາຄາ', url: route('quotations.index') },
+    { title: 'ແກ້ໄຂ', url: undefined }
   ]
 
   // ตรวจสอบว่าสถานะปัจจุบันของใบเสนอราคาอนุญาตให้แก้ไขหรือไม่
@@ -260,8 +260,8 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-gray-500 dark:text-gray-400">แก้ไข</div>
-            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">ใบเสนอราคา #{quotation.reference}</h2>
+            <div className="text-sm text-gray-500 dark:text-gray-400">ແກ້ໄຂ</div>
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">ໃບສະເໜີລາຄາ #{quotation.reference}</h2>
           </div>
         </div>
       }
@@ -277,7 +277,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
               <div className="lg:col-span-2">
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden mb-6">
                   <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">รายการสินค้า</h3>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">ລາຍການສິນຄ້າ</h3>
                   </div>
                   <div className="p-4">
                     <div className="mb-4">
@@ -288,7 +288,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                           className="block w-full mt-1"
                           value={searchTerm}
                           onChange={(e) => handleSearchProducts(e.target.value)}
-                          placeholder="พิมพ์ชื่อหรือรหัสสินค้า"
+                          placeholder="ພິມຊື່ລະຫັດສິນຄ້າ"
                           autoComplete="off"
                         />
                         
@@ -305,11 +305,11 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                                   <div className="flex justify-between items-center">
                                     <div>
                                       <div className="font-medium text-gray-800 dark:text-gray-100">{product.name}</div>
-                                      <div className="text-sm text-gray-500 dark:text-gray-400">รหัส: {product.code}</div>
+                                      <div className="text-sm text-gray-500 dark:text-gray-400">ລະຫັດ: {product.code}</div>
                                     </div>
                                     <div className="text-right">
-                                      <div className="text-gray-800 dark:text-gray-100">฿{(product.price / 100).toLocaleString('th-TH')}</div>
-                                      <div className="text-sm text-gray-500 dark:text-gray-400">คงเหลือ: {product.stock}</div>
+                                      <div className="text-gray-800 dark:text-gray-100">₭{(product.price / 100).toLocaleString('th-TH')}</div>
+                                      <div className="text-sm text-gray-500 dark:text-gray-400">ຄົງເຫຼື້: {product.stock}</div>
                                     </div>
                                   </div>
                                 </button>
@@ -319,7 +319,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                         )}
                       </div>
                       {searchTerm && searchResults.length === 0 && showSearchResults && (
-                        <div className="text-red-500 mt-1">ไม่พบสินค้าที่ค้นหา</div>
+                        <div className="text-red-500 mt-1">ບໍ່ເຫັນສິນຄ້າທີ່ຄົ້ນຫາ</div>
                       )}
                     </div>
                     
@@ -327,10 +327,10 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                       <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead className="bg-gray-50 dark:bg-gray-700">
                           <tr>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">สินค้า</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider w-[140px]">ราคา/หน่วย</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider w-[100px]">จำนวน</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider w-[140px]">ยอดรวม</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ສິນຄ້າ</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider w-[140px]">ລາຄາ/ຫົວໜ່ວຍ</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider w-[100px]">ຈຳນວນ</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider w-[140px]">ຍອດລວມ</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider w-[50px]"></th>
                           </tr>
                         </thead>
@@ -338,7 +338,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                           {items.length === 0 ? (
                             <tr>
                               <td colSpan={5} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                                ยังไม่มีรายการสินค้า
+                                ຍັງບໍ່ມີລາຍການສິນຄ້າ
                               </td>
                             </tr>
                           ) : (
@@ -365,7 +365,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                                   />
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200 text-right">
-                                  ฿{(item.total_price / 100).toLocaleString('th-TH')}
+                                  ₭{(item.total_price / 100).toLocaleString('th-TH')}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                   <button
@@ -393,7 +393,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
               <div className="space-y-6">
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">ข้อมูลใบเสนอราคา</h3>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">ຂໍ້ມູນໃບສະເໜີລາຄາ</h3>
                   </div>
                   <div className="p-4">
                     <div className="mb-4">
@@ -404,7 +404,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                         value={data.customer_id}
                         onChange={(e) => setData('customer_id', e.target.value)}
                       >
-                        <option value="">-- เลือกลูกค้า --</option>
+                        <option value="">-- ເລືອກລູກຄ້າ --</option>
                         {customers.map(customer => (
                           <option key={customer.id} value={customer.id}>
                             {customer.name}
@@ -415,7 +415,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                     </div>
                     
                     <div className="mb-4">
-                      <InputLabel htmlFor="reference" value="เลขที่อ้างอิง" required />
+                      <InputLabel htmlFor="reference" value="ເລກທີ່ອ້າງອິງ" required />
                       <TextInput
                         id="reference"
                         value={data.reference}
@@ -428,7 +428,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                     
                     <div className="grid grid-cols-2 gap-4">
                       <div className="mb-4">
-                        <InputLabel htmlFor="date" value="วันที่" required />
+                        <InputLabel htmlFor="date" value="ວັນທີ" required />
                         <TextInput
                           id="date"
                           type="date"
@@ -439,7 +439,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                         <InputError message={errors.date} className="mt-2" />
                       </div>
                       <div className="mb-4">
-                        <InputLabel htmlFor="due_date" value="วันที่หมดอายุ" required />
+                        <InputLabel htmlFor="due_date" value="ວັນທີໝົດອາຍຸ" required />
                         <TextInput
                           id="due_date"
                           type="date"
@@ -452,16 +452,16 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                     </div>
                     
                     <div className="mb-4">
-                      <InputLabel htmlFor="status" value="สถานะ" required />
+                      <InputLabel htmlFor="status" value="ສະຖານະ" required />
                       <SelectInput
                         id="status"
                         className="mt-1 block w-full"
                         value={data.status}
                         onChange={(e) => setData('status', e.target.value)}
                       >
-                        <option value="0">ร่าง</option>
-                        <option value="1">ส่งแล้ว</option>
-                        <option value="3">ยกเลิก</option>
+                        <option value="0">ຮ່າງ</option>
+                        <option value="1">ສົ່ງແລ້ວ</option>
+                        <option value="3">ຍົກເລີກ</option>
                       </SelectInput>
                       <InputError message={errors.status} className="mt-2" />
                     </div>
@@ -470,7 +470,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                 
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">ส่วนลดและภาษี</h3>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">ສ່ວນຫຼຸດພາສີ</h3>
                   </div>
                   <div className="p-4">
                     <div className="mb-4">
@@ -481,8 +481,8 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                         value={data.discount_type}
                         onChange={(e) => setData('discount_type', e.target.value)}
                       >
-                        <option value="fixed">จำนวนเงิน</option>
-                        <option value="percentage">เปอร์เซ็นต์</option>
+                        <option value="fixed">ຈຳນວນເງີນ</option>
+                        <option value="percentage">ເບີເຊັນ</option>
                       </SelectInput>
                     </div>
                     
@@ -501,7 +501,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                     </div>
                     
                     <div className="mb-4">
-                      <InputLabel htmlFor="tax_rate" value="อัตราภาษีมูลค่าเพิ่ม (%)" />
+                      <InputLabel htmlFor="tax_rate" value="ອັດຕາພາສີມູນຄ່າເພີມ (%)" />
                       <TextInput
                         id="tax_rate"
                         type="number"
@@ -521,21 +521,21 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                     
                     <div className="py-2 text-sm">
                       <div className="flex justify-between mb-2">
-                        <span className="text-gray-600 dark:text-gray-400">ยอดรวม:</span>
-                        <span className="text-gray-800 dark:text-gray-200">฿{(subtotal / 100).toLocaleString('th-TH')}</span>
+                        <span className="text-gray-600 dark:text-gray-400">ຍອດລວມ:</span>
+                        <span className="text-gray-800 dark:text-gray-200">₭{(subtotal / 100).toLocaleString('th-TH')}</span>
                       </div>
                       <div className="flex justify-between mb-2">
-                        <span className="text-gray-600 dark:text-gray-400">ส่วนลด:</span>
-                        <span className="text-gray-800 dark:text-gray-200">-฿{(parseFloat(data.discount_amount) / 100).toLocaleString('th-TH')}</span>
+                        <span className="text-gray-600 dark:text-gray-400">ສ່ວນຫຼຸດ:</span>
+                        <span className="text-gray-800 dark:text-gray-200">-₭{(parseFloat(data.discount_amount) / 100).toLocaleString('th-TH')}</span>
                       </div>
                       <div className="flex justify-between mb-2">
-                        <span className="text-gray-600 dark:text-gray-400">ภาษีมูลค่าเพิ่ม ({taxRate}%):</span>
-                        <span className="text-gray-800 dark:text-gray-200">฿{(taxAmount / 100).toLocaleString('th-TH')}</span>
+                        <span className="text-gray-600 dark:text-gray-400">ພາສີມູນຄ່ເພີມ ({taxRate}%):</span>
+                        <span className="text-gray-800 dark:text-gray-200">₭{(taxAmount / 100).toLocaleString('th-TH')}</span>
                       </div>
                       <div className="border-t border-gray-200 dark:border-gray-700 my-2 pt-2">
                         <div className="flex justify-between font-medium">
-                          <span className="text-gray-800 dark:text-gray-100">ยอดรวมสุทธิ:</span>
-                          <span className="text-gray-800 dark:text-gray-100">฿{(grandTotal / 100).toLocaleString('th-TH')}</span>
+                          <span className="text-gray-800 dark:text-gray-100">ຍອດລວມສຸດທິ:</span>
+                          <span className="text-gray-800 dark:text-gray-100">₭{(grandTotal / 100).toLocaleString('th-TH')}</span>
                         </div>
                       </div>
                     </div>
@@ -544,11 +544,11 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                 
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">หมายเหตุและเงื่อนไข</h3>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">ໝາຍເຫດແລະເງື່ອນໄຂ</h3>
                   </div>
                   <div className="p-4">
                     <div className="mb-4">
-                      <InputLabel htmlFor="notes" value="หมายเหตุ" />
+                      <InputLabel htmlFor="notes" value="ໝາຍເຫດ" />
                       <TextArea
                         id="notes"
                         className="mt-1 block w-full"
@@ -560,7 +560,7 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                     </div>
                     
                     <div className="mb-4">
-                      <InputLabel htmlFor="terms" value="เงื่อนไขและข้อตกลง" />
+                      <InputLabel htmlFor="terms" value="ເງື່ອນໄຂແລະຂໍ້ຕົກລົງ" />
                       <TextArea
                         id="terms"
                         className="mt-1 block w-full"
@@ -578,14 +578,14 @@ export default function Edit({ auth, quotation, customers, products }: EditProps
                     href={route('quotations.show', quotation.id)} 
                     className="inline-flex justify-center items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
                   >
-                    ยกเลิก
+                    ຍົກເລີກ
                   </Link>
                   <button 
                     type="submit" 
                     className="inline-flex justify-center items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 disabled:opacity-25" 
                     disabled={processing || loading}
                   >
-                    {processing || loading ? 'กำลังบันทึก...' : 'บันทึก'}
+                    {processing || loading ? 'ກຳລັງບັນທຶກ...' : 'ບັນທຶກ'}
                   </button>
                 </div>
               </div>

@@ -45,12 +45,12 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
   const columns = [
     {
       field: 'reference',
-      label: 'เลขที่อ้างอิง',
+      label: 'ເລກທີ່ອ້າງອິງ',
       sortable: true
     },
     {
       field: 'date',
-      label: 'วันที่',
+      label: 'ວັນທີ',
       sortable: true,
       render: (quotation: Quotation) => {
         const date = new Date(quotation.date)
@@ -59,20 +59,20 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
     },
     {
       field: 'customer_name',
-      label: 'ลูกค้า',
+      label: 'ລູກຄ້າ',
       sortable: true
     },
     {
       field: 'total_amount',
-      label: 'ยอดรวม',
+      label: 'ຍອດລວມ',
       sortable: true,
       render: (quotation: Quotation) => (
-        <span>฿{(quotation.total_amount / 100).toLocaleString('th-TH')}</span>
+        <span>₭{(quotation.total_amount / 100).toLocaleString('th-TH')}</span>
       )
     },
     {
       field: 'status',
-      label: 'สถานะ',
+      label: 'ສະຖານະ',
       sortable: true,
       render: (quotation: Quotation) => {
         let statusClass = ''
@@ -81,23 +81,23 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
         switch (quotation.status) {
           case 0:
             statusClass = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
-            statusText = 'ร่าง'
+            statusText = 'ຮ່າງ'
             break
           case 1:
             statusClass = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100'
-            statusText = 'ส่งแล้ว'
+            statusText = 'ສົ່ງແລ້ວ'
             break
           case 2:
             statusClass = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100'
-            statusText = 'ขายแล้ว'
+            statusText = 'ຂາຍແລ້ວ'
             break
           case 3:
             statusClass = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100'
-            statusText = 'ยกเลิก'
+            statusText = 'ຍົກເລີກ'
             break
           default:
             statusClass = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
-            statusText = 'ไม่ระบุ'
+            statusText = 'ບໍ່ສະແດງ'
         }
         
         return <span className={statusClass}>{statusText}</span>
@@ -105,7 +105,7 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
     },
     {
       field: 'actions',
-      label: 'จัดการ',
+      label: 'ຈັດການ',
       className: 'w-1',
       render: (quotation: Quotation) => (
         <div className="flex items-center space-x-2">
@@ -113,19 +113,19 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
             href={route('quotations.show', quotation.id)} 
             className="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            ดู
+            ເບີ່ງ
           </Link>
           <Link 
             href={route('quotations.edit', quotation.id)} 
             className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            แก้ไข
+            ແກ້ໄຂ
           </Link>
           <button 
             onClick={() => handleDelete(quotation.id)}
             className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
-            ลบ
+            ລືບ
           </button>
         </div>
       )
@@ -179,7 +179,7 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
 
   // จัดการการลบรายการ
   const handleDelete = (id: number) => {
-    if (confirm('คุณแน่ใจหรือไม่ที่จะลบใบเสนอราคานี้?')) {
+    if (confirm('ເຈົ້າຕ້ອງການທີ່ຈະລືບໃບສະເໜີລາຄານີ້ບໍ່?')) {
       router.delete(route('quotations.destroy', id), {
         onSuccess: () => {
           // แสดง toast หรือ notification แจ้งลบสำเร็จ
@@ -199,7 +199,7 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
           <path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" />
           <path d="M7 6a1 1 0 011-1h1a1 1 0 110 2H8a1 1 0 01-1-1zm1 3a1 1 0 100 2h5a1 1 0 100-2H8zM7 13a1 1 0 011-1h5a1 1 0 110 2H8a1 1 0 01-1-1z" />
         </svg>
-        ใบเสนอราคาที่ขายแล้ว
+        ໃບສະເໜີລາຄາທີ່ຂາຍແລ້ວ
       </Link>
       <Link 
         href={route('quotations.create')}
@@ -208,7 +208,7 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
         </svg>
-        สร้างใบเสนอราคาใหม่
+        ສ້າງໃບສະເໜີລາຄາໃໝ່
       </Link>
       <Link 
         href={route('quotations.create')}
@@ -232,8 +232,8 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'ใบเสนอราคา', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ໃບສະເໜີລາຄາ', url: undefined }
   ]
 
   return (
@@ -242,13 +242,13 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-gray-500 dark:text-gray-400">รายการ</div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">ใบเสนอราคา</h2>
+            <div className="text-sm text-gray-500 dark:text-gray-400">ລາຍການ</div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">ໃບສະເໜີລາຄາ</h2>
           </div>
         </div>
       }
     >
-      <Head title="ใบเสนอราคา" />
+      <Head title="ໃບສະເໜີລາຄາ" />
       
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -264,7 +264,7 @@ export default function Index({ auth, quotations, filters }: QuotationsProps) {
             sortField={filters.field}
             sortDirection={filters.direction}
             loading={loading}
-            title="รายการใบเสนอราคา"
+            title="ລາຍການໃບສະເໜີລາຄາ"
             actions={tableActions}
           />
         </div>

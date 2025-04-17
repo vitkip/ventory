@@ -46,12 +46,12 @@ export default function Sales({ auth, quotations, filters }: QuotationsProps) {
   const columns = [
     {
       field: 'reference',
-      label: 'เลขที่อ้างอิง',
+      label: 'ເລກທີ່ອ້າງອິງ',
       sortable: true
     },
     {
       field: 'date',
-      label: 'วันที่',
+      label: 'ວັນທີ',
       sortable: true,
       render: (quotation: Quotation) => {
         const date = new Date(quotation.date)
@@ -60,20 +60,20 @@ export default function Sales({ auth, quotations, filters }: QuotationsProps) {
     },
     {
       field: 'customer_name',
-      label: 'ลูกค้า',
+      label: 'ລູກຄ້າ',
       sortable: true
     },
     {
       field: 'total_amount',
-      label: 'ยอดรวม',
+      label: 'ຍອດລວມ',
       sortable: true,
       render: (quotation: Quotation) => (
-        <span>฿{(quotation.total_amount / 100).toLocaleString('th-TH')}</span>
+        <span>₭{(quotation.total_amount / 100).toLocaleString('th-TH')}</span>
       )
     },
     {
       field: 'actions',
-      label: 'จัดการ',
+      label: 'ຈັດການ',
       className: 'w-1',
       render: (quotation: Quotation) => (
         <div className="flex items-center space-x-2">
@@ -81,14 +81,14 @@ export default function Sales({ auth, quotations, filters }: QuotationsProps) {
             href={route('quotations.show', quotation.id)} 
             className="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            ดูใบเสนอราคา
+            ເບີ່ງໃບສະເໜີລາຄາ
           </Link>
           {quotation.order_id && (
             <Link 
               href={route('orders.show', quotation.order_id)} 
               className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
             >
-              ดูออเดอร์
+              ເບີ່ງອໍເດີ
             </Link>
           )}
         </div>
@@ -152,9 +152,9 @@ export default function Sales({ auth, quotations, filters }: QuotationsProps) {
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'ใบเสนอราคา', url: route('quotations.index') },
-    { title: 'ใบเสนอราคาที่ขายแล้ว', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ໃບສະເໜີລາຄາ', url: route('quotations.index') },
+    { title: 'ໃບສະເໜີລາຄາທີ່ຂາຍແລ້ວ', url: undefined }
   ]
 
   return (
@@ -163,13 +163,13 @@ export default function Sales({ auth, quotations, filters }: QuotationsProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-gray-500 dark:text-gray-400">รายการ</div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">ใบเสนอราคาที่ขายแล้ว</h2>
+            <div className="text-sm text-gray-500 dark:text-gray-400">ລາຍການ</div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">ໃບສະເໜີລາຄາທີ່ຂາຍແລ້ວ</h2>
           </div>
         </div>
       }
     >
-      <Head title="ใบเสนอราคาที่ขายแล้ว" />
+      <Head title="ໃບສະເໜີລາຄາທີ່ຂາຍແລ້ວ" />
       
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -185,7 +185,7 @@ export default function Sales({ auth, quotations, filters }: QuotationsProps) {
             sortField={filters.field}
             sortDirection={filters.direction}
             loading={loading}
-            title="รายการใบเสนอราคาที่ขายแล้ว"
+            title="ລາຍການໃບສະເໜີລາຄາທີ່ຂາຍແລ້ວ"
           />
         </div>
       </div>
