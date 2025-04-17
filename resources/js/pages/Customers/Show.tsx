@@ -69,51 +69,51 @@ export default function Show({ auth, customer }: ShowProps) {
             <div className="lg:col-span-2">
               <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลลูกค้า</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນລູກຄ້າ</h3>
                   <Link 
                     href={route('customers.edit', customer.id)} 
                     className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150"
                   >
-                    แก้ไขข้อมูล
+                    ແກ້ໄຂຂໍ້ມູນ
                   </Link>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 w-1/4">ชื่อ</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 w-1/4">ຊື່</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{customer.name}</td>
                       </tr>
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">อีเมล</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ອີເມລ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{customer.email}</td>
                       </tr>
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">เบอร์โทรศัพท์</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ເບີໂທລະສັບ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{customer.phone}</td>
                       </tr>
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ที่อยู่</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ທີ່ຢູ່</td>
                         <td className="px-6 py-4 text-gray-900 dark:text-gray-100">{customer.address}</td>
                       </tr>
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ชื่อเจ้าของบัญชี</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ຊື່ເຈົ້າຂອງບັນຊີ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{customer.account_holder || '-'}</td>
                       </tr>
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">เลขที่บัญชี</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ເລກບັນຊີ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{customer.account_number || '-'}</td>
                       </tr>
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ธนาคาร</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ທະນາຄານ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{customer.bank_name || '-'}</td>
                       </tr>
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">วันที่สร้าง</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ວັນທີສ້າງ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{new Date(customer.created_at).toLocaleDateString('th-TH')}</td>
                       </tr>
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">วันที่อัปเดตล่าสุด</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">ວັນທີອັບເດດລາສຸດ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{new Date(customer.updated_at).toLocaleDateString('th-TH')}</td>
                       </tr>
                     </tbody>
@@ -124,7 +124,7 @@ export default function Show({ auth, customer }: ShowProps) {
                     href={route('customers.index')} 
                     className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 text-sm font-medium"
                   >
-                    กลับไปยังรายการลูกค้า
+                    ກັບໄປຍັງລາຍການລູກຄ້າ
                   </Link>
                 </div>
               </div>
@@ -137,15 +137,15 @@ export default function Show({ auth, customer }: ShowProps) {
                 <div>
                   <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                     <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ประวัติการเสนอราคา</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ປະວັດການສະເໜີລາຄາ</h3>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full text-sm">
                         <thead className="bg-gray-50 dark:bg-gray-700 text-left">
                           <tr>
-                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">รหัส</th>
-                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">วันที่</th>
-                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">ยอดรวม</th>
+                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">ລະຫັດ</th>
+                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">ວັນທີ</th>
+                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">ຍອດລວມ</th>
                             <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium"></th>
                           </tr>
                         </thead>
@@ -160,7 +160,7 @@ export default function Show({ auth, customer }: ShowProps) {
                                   href={route('quotations.show', quotation.id)} 
                                   className="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                                 >
-                                  ดู
+                                  ເບີ່ງ
                                 </Link>
                               </td>
                             </tr>
@@ -176,15 +176,15 @@ export default function Show({ auth, customer }: ShowProps) {
                 <div>
                   <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                     <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ประวัติการสั่งซื้อ</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ປະຫວັດການສັ່ງຊື້ </h3>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full text-sm">
                         <thead className="bg-gray-50 dark:bg-gray-700 text-left">
                           <tr>
-                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">รหัส</th>
-                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">วันที่</th>
-                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">ยอดรวม</th>
+                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">ລະຫັດ</th>
+                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">ວັນທີ</th>
+                            <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium">ຍອດລວມ</th>
                             <th className="px-6 py-3 text-gray-500 dark:text-gray-400 font-medium"></th>
                           </tr>
                         </thead>
@@ -199,7 +199,7 @@ export default function Show({ auth, customer }: ShowProps) {
                                   href={route('orders.show', order.id)} 
                                   className="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                                 >
-                                  ดู
+                                  ເບີ່ງ
                                 </Link>
                               </td>
                             </tr>
