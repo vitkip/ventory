@@ -47,22 +47,22 @@ export default function Settings({ auth, user }: SettingsProps) {
           
           <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
             <div className="mb-6">
-              <h2 className="text-xl font-semibold mb-1">การตั้งค่าบัญชี</h2>
-              <p className="text-gray-500 text-sm">จัดการการตั้งค่าบัญชีและความปลอดภัย</p>
+              <h2 className="text-xl font-semibold mb-1">ການຕັ້ງຄ່າບັນຊີ</h2>
+              <p className="text-gray-500 text-sm">ຈັດການການຕັ້ງຄ່າບັນຊີແລະຄວາມປອດໄພ</p>
             </div>
             
             <div className="border-t border-gray-200 pt-4">
               <div className="mb-6">
-                <h3 className="text-lg font-medium text-red-600 mb-2">ลบบัญชี</h3>
+                <h3 className="text-lg font-medium text-red-600 mb-2">ລືບບັນຊີ</h3>
                 <p className="text-gray-500 mb-4">
-                  เมื่อบัญชีของคุณถูกลบ ทรัพยากรและข้อมูลทั้งหมดจะถูกลบอย่างถาวร โปรดดาวน์โหลดข้อมูลหรือข้อมูลใดๆ ที่คุณต้องการเก็บไว้ก่อนลบบัญชีของคุณ
+                  ເມື່ອບັນຊີຂອງເຈົ້າຖືລືບ ຂໍ້ມູນທັງໝົດຈະຖືກລືບຢ່າງຖາວອນ ກະລຸນາດາວໂຫຼດຂໍ້ມູນຫຼືຂໍ້ມູນໃດໆ ທີ່ຕ້ອງການເກັບໄວ້ກ່ຽວກັບບັນຊີນີ້ ກ່ອນລືບບັນຊີຂອງທ່ານ
                 </p>
                 <button
                   type="button"
                   className="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150"
                   onClick={() => setShowDeleteConfirm(true)}
                 >
-                  ลบบัญชี
+                  ລືບບັນຊີ
                 </button>
               </div>
             </div>
@@ -74,14 +74,14 @@ export default function Settings({ auth, user }: SettingsProps) {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
           <div className="bg-white rounded-lg shadow-xl max-w-md w-full">
             <div className="p-4 sm:p-6">
-              <h2 className="text-lg font-medium text-gray-900 mb-4">คุณแน่ใจหรือไม่ว่าต้องการลบบัญชี?</h2>
+              <h2 className="text-lg font-medium text-gray-900 mb-4">ເຈົ້າແນ່ໃຈຫຼືບໍ່ວ່າຈະລືບບັນຊີນີ້?</h2>
               <p className="text-gray-500 mb-6">
-                เมื่อบัญชีของคุณถูกลบ ทรัพยากรและข้อมูลทั้งหมดจะถูกลบอย่างถาวร กรุณาใส่รหัสผ่านของคุณเพื่อยืนยันว่าคุณต้องการลบบัญชีของคุณอย่างถาวร
+                ເມື່ອບັນຊີຂອງເຈົ້າຖືລືບ ຂໍ້ມູນທັງໝົດຈະຖືກລືບຢ່າງຖາວອນ ກະລຸນາໃສ່ລະຫັດຜ່ານຂອງເຈົ້າເພື່ອຢືນຍັນວ່າຕ້ອງການລືບບັນຊີນີ້ແທ້ ບັນຊີຢ່າງຖາວອນ         
               </p>
               
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">รหัสผ่าน</label>
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">ລະຫັດຜ່ານ</label>
                   <input
                     type="password"
                     id="password"
@@ -101,7 +101,7 @@ export default function Settings({ auth, user }: SettingsProps) {
                     className="inline-flex items-center px-4 py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-gray-900 uppercase tracking-widest hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150 mr-2"
                     onClick={() => setShowDeleteConfirm(false)}
                   >
-                    ยกเลิก
+                    ຍົກເລີກ
                   </button>
                   <button
                     type="submit"
