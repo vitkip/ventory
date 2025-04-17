@@ -68,7 +68,7 @@ export default function Create({ auth }: PageProps) {
               <div className="lg:col-span-1">
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">รูปลูกค้า</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຮູບພາບລູກຄ້າ</h3>
                   </div>
                   <div className="p-6">
                     <img 
@@ -100,7 +100,7 @@ export default function Create({ auth }: PageProps) {
               <div className="lg:col-span-2">
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลลูกค้า</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນລູກຄ້າ</h3>
                   </div>
                   <div className="p-6">
                     <div className="mb-4">
@@ -176,7 +176,7 @@ export default function Create({ auth }: PageProps) {
                         <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
                       </div>
                       <div className="relative flex justify-center">
-                        <span className="bg-white dark:bg-gray-800 px-2 text-sm text-gray-500 dark:text-gray-400">ข้อมูลบัญชีธนาคาร (ไม่บังคับ)</span>
+                        <span className="bg-white dark:bg-gray-800 px-2 text-sm text-gray-500 dark:text-gray-400">ຂໍ້ມູນບັນຊີທະນາການ (ບໍ່ບັງຄັບ)</span>
                       </div>
                     </div>
 

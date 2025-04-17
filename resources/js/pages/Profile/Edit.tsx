@@ -37,8 +37,8 @@ export default function Edit({ auth, user }: EditProps) {
   })
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'โปรไฟล์', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ໂປຣຟາຍ', url: undefined }
   ]
 
   const handleSubmit = (e: FormEvent) => {
@@ -67,7 +67,7 @@ export default function Edit({ auth, user }: EditProps) {
       header={
         <div className="mb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold leading-tight text-gray-800 dark:text-gray-200">
-            แก้ไขโปรไฟล์
+            ແກ້ໄຂໂປຣຟາຍ
           </h2>
         </div>
       }
@@ -84,7 +84,7 @@ export default function Edit({ auth, user }: EditProps) {
               <div className="w-full lg:w-1/3">
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg">
                   <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">รูปโปรไฟล์</h3>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">ຮູບໂປຣຟາຍ</h3>
                   </div>
                   <div className="p-6">
                     <div className="flex justify-center mb-4">
@@ -99,7 +99,7 @@ export default function Edit({ auth, user }: EditProps) {
                     
                     <div className="mt-4">
                       <div className="text-xs text-gray-500 dark:text-gray-400 italic mb-2">
-                        JPG หรือ PNG ขนาดไม่เกิน 2 MB
+                        JPG ຫຼື PNG ຂະໜາດບໍ່ເກີນ 2 MB
                       </div>
                       <div className="mt-1">
                         <input
@@ -129,12 +129,12 @@ export default function Edit({ auth, user }: EditProps) {
                 {/* ข้อมูลส่วนตัว */}
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg">
                   <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">ข้อมูลส่วนตัว</h3>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">ຂໍ້ມູນສ່ວນຕົວ</h3>
                   </div>
                   <div className="p-6 space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="name">
-                        ชื่อ <span className="text-red-600">*</span>
+                        ຊື່ <span className="text-red-600">*</span>
                       </label>
                       <input
                         id="name"
@@ -151,7 +151,7 @@ export default function Edit({ auth, user }: EditProps) {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="email">
-                        อีเมล <span className="text-red-600">*</span>
+                        ອີເມລ <span className="text-red-600">*</span>
                       </label>
                       <input
                         id="email"
@@ -168,7 +168,7 @@ export default function Edit({ auth, user }: EditProps) {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="phone">
-                        เบอร์โทรศัพท์
+                        ເບີໂທລະສັບ
                       </label>
                       <input
                         id="phone"
@@ -184,7 +184,7 @@ export default function Edit({ auth, user }: EditProps) {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="address">
-                        ที่อยู่
+                        ທີ່ຢູ່
                       </label>
                       <textarea
                         id="address"
@@ -200,7 +200,7 @@ export default function Edit({ auth, user }: EditProps) {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="bio">
-                        ประวัติย่อ
+                        ປະຫວັດຫຍໍ້
                       </label>
                       <textarea
                         id="bio"
@@ -219,12 +219,12 @@ export default function Edit({ auth, user }: EditProps) {
                 {/* เปลี่ยนรหัสผ่าน */}
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg mt-6">
                   <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">เปลี่ยนรหัสผ่าน</h3>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">ປ່ຽນລະຫັດຜ່ານ</h3>
                   </div>
                   <div className="p-6 space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="current_password">
-                        รหัสผ่านปัจจุบัน
+                        ລະຫັດຜ່ານປະຈຸບັນ
                       </label>
                       <input
                         id="current_password"
@@ -240,7 +240,7 @@ export default function Edit({ auth, user }: EditProps) {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="password">
-                        รหัสผ่านใหม่
+                        ລະຫັດຜ່ານໃໝ່
                       </label>
                       <input
                         id="password"
@@ -256,7 +256,7 @@ export default function Edit({ auth, user }: EditProps) {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="password_confirmation">
-                        ยืนยันรหัสผ่านใหม่
+                        ຢືນຍັນລະຫັດຜ່ານໃໝ່ 
                       </label>
                       <input
                         id="password_confirmation"
@@ -276,7 +276,7 @@ export default function Edit({ auth, user }: EditProps) {
                       className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors"
                       disabled={processing}
                     >
-                      {processing ? 'กำลังบันทึก...' : 'บันทึกข้อมูล'}
+                      {processing ? 'ກຳລັງບັນທຶກ...' : 'ບັນທຶກຂໍ້ມູນ'}
                     </button>
                   </div>
                 </div>
