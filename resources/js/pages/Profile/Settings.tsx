@@ -32,14 +32,14 @@ export default function Settings({ auth, user }: SettingsProps) {
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'ข้อมูลส่วนตัว', url: route('profile.edit') },
-    { title: 'การตั้งค่าบัญชี', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ຂໍ້ມູນສ່ວນຕົວ', url: route('profile.edit') },
+    { title: 'ການຕັ້ງຄ່າບັນຊີ', url: undefined }
   ]
 
   return (
     <AuthenticatedLayout user={auth.user}>
-      <Head title="การตั้งค่าบัญชี" />
+      <Head title="ການຕັ້ງຄ່າບັນຊີ" />
       
       <div className="pb-12">
         <div className="container-xl">
@@ -108,7 +108,7 @@ export default function Settings({ auth, user }: SettingsProps) {
                     className="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150"
                     disabled={processing}
                   >
-                    {processing ? 'กำลังลบบัญชี...' : 'ลบบัญชี'}
+                    {processing ? 'ກຳລັງລືບບັນຊີ...' : 'ລືບບັນຊີ'}
                   </button>
                 </div>
               </form>
