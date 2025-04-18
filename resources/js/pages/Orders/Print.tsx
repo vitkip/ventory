@@ -75,7 +75,7 @@ export default function Print({ order, company }: PrintProps) {
 
   return (
     <>
-      <Head title={`พิมพ์ใบสั่งซื้อ #${order.invoice_no || 'ใหม่'}`} />
+      <Head title={`ພິມໃບສັ່ງຊື້ #${order.invoice_no || 'ใหม่'}`} />
       
       <div className="print:hidden p-4 text-right">
         <button 
@@ -88,7 +88,7 @@ export default function Print({ order, company }: PrintProps) {
             <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
             <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z"></path>
           </svg>
-          พิมพ์
+          ພິມ
         </button>
       </div>
       
@@ -97,11 +97,11 @@ export default function Print({ order, company }: PrintProps) {
           <div className="p-6">
             <div className="flex justify-between mb-6">
               <div>
-                <h2 className="text-2xl font-semibold mb-1">ใบสั่งซื้อ #{order.invoice_no || 'ใหม่'}</h2>
+                <h2 className="text-2xl font-semibold mb-1">ໃບສັ່ງຊື້ #{order.invoice_no || 'ใหม่'}</h2>
                 <div className="text-gray-700 dark:text-gray-300">
-                  <div className="text-xl font-semibold mb-2">ใบสั่งซื้อ</div>
-                  <div className="text-gray-500 dark:text-gray-400">เลขที่: {order.invoice_no || '-'}</div>
-                  <div className="text-gray-500 dark:text-gray-400">วันที่: {order.order_date ? new Date(order.order_date).toLocaleDateString('th-TH') : '-'}</div>
+                  <div className="text-xl font-semibold mb-2">ໃບສັ່ງຊື້</div>
+                  <div className="text-gray-500 dark:text-gray-400">ເລກທີ: {order.invoice_no || '-'}</div>
+                  <div className="text-gray-500 dark:text-gray-400">ວັນທີ: {order.order_date ? new Date(order.order_date).toLocaleDateString('th-TH') : '-'}</div>
                 </div>
               </div>
               <div className="text-right">
@@ -112,8 +112,8 @@ export default function Print({ order, company }: PrintProps) {
                 {company && (
                   <>
                     {company.address && <div className="text-gray-700 dark:text-gray-300">{company.address}</div>}
-                    {company.phone && <div className="text-gray-700 dark:text-gray-300">โทร: {company.phone}</div>}
-                    {company.email && <div className="text-gray-700 dark:text-gray-300">อีเมล: {company.email}</div>}
+                    {company.phone && <div className="text-gray-700 dark:text-gray-300">ໂທ: {company.phone}</div>}
+                    {company.email && <div className="text-gray-700 dark:text-gray-300">ອີເມລ: {company.email}</div>}
                   </>
                 )}
               </div>
@@ -121,22 +121,22 @@ export default function Print({ order, company }: PrintProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
-                <h3 className="text-lg font-semibold mb-2">ข้อมูลลูกค้า</h3>
+                <h3 className="text-lg font-semibold mb-2">ຂໍ້ມູນລູກຄ້າ</h3>
                 {order.customer ? (
                   <>
                     <div className="mb-1">{order.customer.name}</div>
                     <div className="mb-1">{order.customer.address}</div>
-                    <div className="mb-1">โทร: {order.customer.phone}</div>
-                    <div className="mb-1">อีเมล: {order.customer.email}</div>
+                    <div className="mb-1">ໂທ: {order.customer.phone}</div>
+                    <div className="mb-1">ອີເມລ: {order.customer.email}</div>
                   </>
                 ) : (
-                  <div className="mb-1">ไม่มีข้อมูลลูกค้า</div>
+                  <div className="mb-1">ບໍ່ມີຂໍ້ມູນລູກຄ້າ</div>
                 )}
               </div>
               <div className="text-right">
-                <h3 className="text-lg font-semibold mb-2">สถานะ</h3>
+                <h3 className="text-lg font-semibold mb-2">ສະຖານະ</h3>
                 <div className="mb-1">
-                  <span className="font-medium">สถานะการสั่งซื้อ:</span>{' '}
+                  <span className="font-medium">ສະຖານະການສັ່ງຊື້:</span>{' '}
                   {(() => {
                     // ตรวจสอบว่ามี order_status ที่เป็น object และมี value หรือไม่
                     const statusValue = typeof order.order_status === 'object' && order.order_status !== null 
@@ -150,11 +150,11 @@ export default function Print({ order, company }: PrintProps) {
                   })()}
                 </div>
                 <div className="mb-1">
-                  <span className="font-medium">วิธีการชำระเงิน:</span>{' '}
+                  <span className="font-medium">ວິທີການຈ່າຍເງີນ:</span>{' '}
                   {order.payment_type || '-'}
                 </div>
                 <div className="mb-1">
-                  <span className="font-medium">วันที่สร้าง:</span>{' '}
+                  <span className="font-medium">ວັນທີສ້າງ:</span>{' '}
                   {order.created_at ? new Date(order.created_at).toLocaleDateString('th-TH') : '-'}
                 </div>
               </div>
@@ -164,12 +164,12 @@ export default function Print({ order, company }: PrintProps) {
               <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700">
                 <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[5%]">ลำดับ</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">รหัสสินค้า</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[30%]">ชื่อสินค้า</th>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[10%]">จำนวน</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ราคาต่อหน่วย</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ราคารวม</th>
+                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[5%]">ລຳດັບ</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ລະຫັດສິນຄ້າ</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[30%]">ຊື່ສິນຄ້າ</th>
+                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[10%]">ຈຳນວນ</th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ລາຄາຕໍ່ໜ່ວຍ</th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ລາຄາລວມ</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -184,47 +184,47 @@ export default function Print({ order, company }: PrintProps) {
                         {detail.quantity} {detail.product?.unit || '-'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900 dark:text-gray-100">
-                        ฿{typeof detail.unitcost === 'number' ? (detail.unitcost / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                        ₭{typeof detail.unitcost === 'number' ? (detail.unitcost / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900 dark:text-gray-100">
-                        ฿{typeof detail.total === 'number' ? (detail.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                        ₭{typeof detail.total === 'number' ? (detail.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                       </td>
                     </tr>
                   )) : (
                     <tr>
-                      <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">ไม่พบรายการสินค้า</td>
+                      <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">ບໍ່ເຫັນລາຍການສິນຄ້າ</td>
                     </tr>
                   )}
                 </tbody>
                 <tfoot className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ยอดรวมก่อนภาษี</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຍອດລວມກ່ອນພາສີ</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
-                      ฿{typeof order.sub_total === 'number' ? (order.sub_total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                      ₭{typeof order.sub_total === 'number' ? (order.sub_total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ภาษีมูลค่าเพิ่ม (7%)</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ພາສີມູນຄ່າເພີມ (7%)</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
-                      ฿{typeof order.vat === 'number' ? (order.vat / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                      ₭{typeof order.vat === 'number' ? (order.vat / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ยอดรวมทั้งสิ้น</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຍອດລວມທັງໝົດ</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
-                      ฿{typeof order.total === 'number' ? (order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                      ₭{typeof order.total === 'number' ? (order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ชำระแล้ว</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຈ່າຍແລ້ວ</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
-                      ฿{typeof order.pay === 'number' ? (order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                      ₭{typeof order.pay === 'number' ? (order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ยอดค้างชำระ</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຄ້າຈ່າຍ</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
-                      ฿{typeof order.due === 'number' ? (order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                      ₭{typeof order.due === 'number' ? (order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                 </tfoot>
@@ -233,23 +233,23 @@ export default function Print({ order, company }: PrintProps) {
 
             <div className="grid grid-cols-3 gap-4 mt-8">
               <div className="text-center">
-                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ลงชื่อผู้สั่งซื้อ</div>
+                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ລົງຊື່ຜູ້ສັ່ງຊື້</div>
               </div>
               <div className="text-center">
-                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ลงชื่อผู้อนุมัติ</div>
+                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ລົງຊື່ຜູ້ອະນຸມັດ</div>
               </div>
               <div className="text-center">
-                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ลงชื่อลูกค้า</div>
+                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ລົງຊື່ລູຄ້າ</div>
               </div>
             </div>
 
             <div className="flex flex-col space-y-2">
               <div className="flex justify-between">
-                <span className="font-medium">เลขที่อ้างอิง:</span>
+                <span className="font-medium">ເລກທີອ້າງອິງ:</span>
                 <span>{order.invoice_no || '-'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-medium">วันที่สั่งซื้อ:</span>
+                <span className="font-medium">ວັນທີສັ່ງຊື້:</span>
                 <span>{order.order_date ? new Date(order.order_date).toLocaleDateString('th-TH') : '-'}</span>
               </div>
             </div>

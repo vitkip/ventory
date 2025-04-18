@@ -53,8 +53,8 @@ interface ShowProps extends PageProps {
 
 export default function Show({ auth, order }: ShowProps) {
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อ', url: route('orders.index') },
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້', url: route('orders.index') },
     { title: order.invoice_no, url: undefined }
   ]
 
@@ -77,7 +77,7 @@ export default function Show({ auth, order }: ShowProps) {
           <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
           <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z"></path>
         </svg>
-        พิมพ์ใบสั่งซื้อ
+        ພິມໃບສັ່ງຊື້
       </Link>
       {order.order_status.value === 0 && (
         <Link
@@ -90,7 +90,7 @@ export default function Show({ auth, order }: ShowProps) {
             <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
             <path d="M16 5l3 3"></path>
           </svg>
-          แก้ไขคำสั่งซื้อ
+          ແກ້ໄຂຄໍາສັ່ງຊື້
         </Link>
       )}
       {order.order_status.value === 0 && (
@@ -104,14 +104,14 @@ export default function Show({ auth, order }: ShowProps) {
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M5 12l5 5l10 -10"></path>
           </svg>
-          ยืนยันคำสั่งซื้อ
+          ຢືນຍັນຄໍາສັ່ງຊື້
         </Link>
       )}
       <Link
         href={route('orders.index')}
         className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       >
-        กลับไปยังรายการคำสั่งซื้อ
+        ກັບໄປຍັງລາຍການຄໍາສັ່ງຊື້
       </Link>
     </div>
   )
@@ -124,8 +124,8 @@ export default function Show({ auth, order }: ShowProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-gray-500 dark:text-gray-400">รายละเอียด</div>
-                <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">คำสั่งซื้อ {order.invoice_no}</h2>
+                <div className="text-sm text-gray-500 dark:text-gray-400">ລາຍລະອຽດ</div>
+                <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ຄໍາສັ່ງຊື້ {order.invoice_no}</h2>
               </div>
               <div>
                 {(() => {
@@ -171,7 +171,7 @@ export default function Show({ auth, order }: ShowProps) {
         </div>
       }
     >
-      <Head title={`คำสั่งซื้อ: ${order.invoice_no}`} />
+      <Head title={`ຄໍາສັ່ງຊື້: ${order.invoice_no}`} />
 
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -181,17 +181,17 @@ export default function Show({ auth, order }: ShowProps) {
             <div className="lg:col-span-8">
               <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg">
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">รายการสินค้า</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ລາຍການສິນຄ້າ</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead className="bg-gray-50 dark:bg-gray-700">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">รหัสสินค้า</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ชื่อสินค้า</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ราคา</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">จำนวน</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">รวม</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລະຫັດສິນຄ້າ</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຊື່ສິນຄ້າ</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລາຄາ</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຈຳນວນ</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລວມ</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -203,31 +203,31 @@ export default function Show({ auth, order }: ShowProps) {
                               {detail.product.name}
                             </Link>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">฿{formatPrice(detail.unitcost)}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">₭{formatPrice(detail.unitcost)}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">{detail.quantity}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">฿{formatPrice(detail.total)}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">₭{formatPrice(detail.total)}</td>
                         </tr>
                       ))}
                       <tr className="bg-gray-50 dark:bg-gray-700">
-                        <td colSpan={4} className="px-6 py-4 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">รวม</td>
-                        <td className="px-6 py-4 text-right text-sm text-gray-900 dark:text-gray-100">฿{formatPrice(order.sub_total)}</td>
+                        <td colSpan={4} className="px-6 py-4 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">ລວມ</td>
+                        <td className="px-6 py-4 text-right text-sm text-gray-900 dark:text-gray-100">₭{formatPrice(order.sub_total)}</td>
                       </tr>
                       <tr className="bg-gray-50 dark:bg-gray-700">
-                        <td colSpan={4} className="px-6 py-4 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">ภาษีมูลค่าเพิ่ม 7%</td>
-                        <td className="px-6 py-4 text-right text-sm text-gray-900 dark:text-gray-100">฿{formatPrice(order.vat)}</td>
+                        <td colSpan={4} className="px-6 py-4 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">ພາສີມູນຄ່າເພີມ 7%</td>
+                        <td className="px-6 py-4 text-right text-sm text-gray-900 dark:text-gray-100">₭{formatPrice(order.vat)}</td>
                       </tr>
                       <tr className="bg-gray-50 dark:bg-gray-700">
-                        <td colSpan={4} className="px-6 py-4 text-right text-sm font-bold uppercase text-gray-900 dark:text-gray-100">ยอดรวมสุทธิ</td>
-                        <td className="px-6 py-4 text-right text-sm font-bold text-gray-900 dark:text-gray-100">฿{formatPrice(order.total)}</td>
+                        <td colSpan={4} className="px-6 py-4 text-right text-sm font-bold uppercase text-gray-900 dark:text-gray-100">ຍອດລວມທັງໝົດ</td>
+                        <td className="px-6 py-4 text-right text-sm font-bold text-gray-900 dark:text-gray-100">₭{formatPrice(order.total)}</td>
                       </tr>
                       <tr className="bg-gray-50 dark:bg-gray-700">
-                        <td colSpan={4} className="px-6 py-4 text-right text-sm text-green-600 dark:text-green-400">ชำระแล้ว</td>
-                        <td className="px-6 py-4 text-right text-sm text-green-600 dark:text-green-400">฿{formatPrice(order.pay)}</td>
+                        <td colSpan={4} className="px-6 py-4 text-right text-sm text-green-600 dark:text-green-400">ຈ່າຍແລ້ວ</td>
+                        <td className="px-6 py-4 text-right text-sm text-green-600 dark:text-green-400">₭{formatPrice(order.pay)}</td>
                       </tr>
                       {order.due > 0 && (
                         <tr className="bg-gray-50 dark:bg-gray-700">
-                          <td colSpan={4} className="px-6 py-4 text-right text-sm text-red-600 dark:text-red-400">ค้างชำระ</td>
-                          <td className="px-6 py-4 text-right text-sm text-red-600 dark:text-red-400">฿{formatPrice(order.due)}</td>
+                          <td colSpan={4} className="px-6 py-4 text-right text-sm text-red-600 dark:text-red-400">ຄ້າຈ່າຍ</td>
+                          <td className="px-6 py-4 text-right text-sm text-red-600 dark:text-red-400">₭{formatPrice(order.due)}</td>
                         </tr>
                       )}
                     </tbody>
@@ -242,13 +242,13 @@ export default function Show({ auth, order }: ShowProps) {
             <div className="lg:col-span-4">
               <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg mb-6">
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลลูกค้า</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນລູກຄ້າ</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100 w-1/2">ชื่อลูกค้า</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100 w-1/2">ຊື່ລູກຄ້າ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
                           <Link href={route('customers.show', order.customer_id)} className="text-blue-600 hover:text-blue-800 hover:underline">
                             {order.customer.name}
@@ -256,15 +256,15 @@ export default function Show({ auth, order }: ShowProps) {
                         </td>
                       </tr>
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">อีเมล</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ອີເມລ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{order.customer.email}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">เบอร์โทรศัพท์</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ເບີໂທລະສັບ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{order.customer.phone}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ที่อยู่</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ທີ່ຢູ່</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{order.customer.address}</td>
                       </tr>
                     </tbody>
@@ -274,21 +274,21 @@ export default function Show({ auth, order }: ShowProps) {
 
               <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg">
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลคำสั่งซื้อ</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນຄໍາສັ່ງຊື້</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100 w-1/2">เลขที่ใบสั่งซื้อ</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100 w-1/2">ເລກທີ່ໃບສັ່ງຊື້</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{order.invoice_no}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">วันที่สั่งซื้อ</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ວັນທີສັ່ງຊື້</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{new Date(order.order_date).toLocaleDateString('th-TH', { dateStyle: 'full' })}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">สถานะ</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ສະຖານະ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
                           {(() => {
                             const orderStatusValue = typeof order.order_status === 'object' 
@@ -304,17 +304,17 @@ export default function Show({ auth, order }: ShowProps) {
                             if (orderStatusValue === 0) {
                               statusInfo = {
                                 classes: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100',
-                                label: 'รออนุมัติ'
+                                label: 'ຖ້າອະນຸຍາດ'
                               };
                             } else if (orderStatusValue === 1) {
                               statusInfo = {
                                 classes: 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
-                                label: 'เสร็จสิ้น'
+                                label: 'ສຳເລັດ'
                               };
                             } else if (orderStatusValue === 2) {
                               statusInfo = {
                                 classes: 'bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100',
-                                label: 'ยกเลิก'
+                                label: 'ຍົກເລີກ'
                               };
                             }
                             
@@ -332,12 +332,12 @@ export default function Show({ auth, order }: ShowProps) {
                         </td>
                       </tr>
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ประเภทการชำระเงิน</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ປະເພດການຈ່າຍເງີນ</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{order.payment_type}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">จำนวนสินค้า</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{order.total_products} รายการ</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">ຈຳນວນສິນຄ້າ</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{order.total_products} ລາຍການ</td>
                       </tr>
                     </tbody>
                   </table>

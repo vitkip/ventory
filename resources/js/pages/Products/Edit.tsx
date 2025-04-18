@@ -99,7 +99,7 @@ export default function Edit({ auth, categories, units, product }: EditProps) {
         </div>
       }
     >
-      <Head title={`แก้ไขสินค้า: ${product.name}`} />
+      <Head title={`ແກ້ໄຂສິນຄ້າ: ${product.name}`} />
 
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -116,7 +116,7 @@ export default function Edit({ auth, categories, units, product }: EditProps) {
                     <img
                       className="w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700 mb-4"
                       src={imagePreview || '/assets/img/products/default.webp'}
-                      alt="รูปสินค้า"
+                      alt="ຮູບສິນຄ້າ"
                     />
 
                     <div className="text-sm italic text-gray-500 dark:text-gray-400 mb-4">

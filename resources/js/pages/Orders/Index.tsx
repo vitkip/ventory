@@ -54,7 +54,7 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
   const columns = [
     {
       field: 'invoice_no',
-      label: 'เลขที่ใบสั่งซื้อ',
+      label: 'ເລກທີ່ໃບສັ່ງຊື້',
       sortable: true,
       render: (order: Order) => (
         <Link href={route('orders.show', order.id)} className="text-blue-600 hover:text-blue-800 hover:underline">
@@ -64,7 +64,7 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
     },
     {
       field: 'customer.name',
-      label: 'ลูกค้า',
+      label: 'ລູກຄ້າ',
       sortable: true,
       render: (order: Order) => (
         <Link href={route('customers.show', order.customer_id)} className="text-blue-600 hover:text-blue-800 hover:underline">
@@ -74,7 +74,7 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
     },
     {
       field: 'order_date',
-      label: 'วันที่',
+      label: 'ວັນທີ',
       sortable: true,
       render: (order: Order) => (
         <span>{new Date(order.order_date).toLocaleDateString('th-TH')}</span>
@@ -82,20 +82,20 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
     },
     {
       field: 'total_products',
-      label: 'รายการ',
+      label: 'ລາຍການ',
       sortable: true
     },
     {
       field: 'total',
-      label: 'ยอดรวม',
+      label: 'ຍອດລວມ',
       sortable: true,
       render: (order: Order) => (
-        <span>฿{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+        <span>₭{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
       )
     },
     {
       field: 'order_status',
-      label: 'สถานะ',
+      label: 'ສະຖານະ',
       sortable: true,
       render: (order: Order) => {
         // ตรวจสอบว่า order_status มาในรูปแบบไหน
@@ -112,17 +112,17 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
         if (orderStatusValue === 0) {
           statusInfo = {
             classes: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100',
-            label: 'รออนุมัติ'
+            label: 'ຖ້າອະນນຸຍາດ'
           };
         } else if (orderStatusValue === 1) {
           statusInfo = {
             classes: 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
-            label: 'เสร็จสิ้น'
+            label: 'ສຳເລັດ'
           };
         } else if (orderStatusValue === 2) {
           statusInfo = {
             classes: 'bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100',
-            label: 'ยกเลิก'
+            label: 'ຍົກເລີກ'
           };
         }
         
@@ -140,7 +140,7 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
     },
     {
       field: 'actions',
-      label: 'จัดการ',
+      label: 'ຈັດການ',
       className: 'w-1',
       render: (order: Order) => (
         <div className="flex space-x-2">
@@ -155,7 +155,7 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
             className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-700 dark:text-indigo-100 dark:hover:bg-indigo-600"
             target="_blank"
           >
-            พิมพ์
+            ພິມ
           </Link>
         </div>
       )
@@ -217,7 +217,7 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
         </svg>
-        สร้างคำสั่งซื้อใหม่
+        ສ້າງຄຳສັ່ງຊື້ໃໝ່
       </Link>
       <Link 
         href={route('orders.create')}
@@ -237,25 +237,25 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
         href={route('orders.index')} 
         className="px-4 py-2 text-sm font-medium rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       >
-        รายการทั้งหมด
+        ລາຍການທັງໝົດ
       </Link>
       <Link 
         href={route('orders.pending')} 
         className="px-4 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       >
-        รออนุมัติ
+        ຖ້າອະນນຸຍາດ
       </Link>
       <Link 
         href={route('orders.complete')} 
         className="px-4 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       >
-        เสร็จสิ้น
+        ສຳເລັດ
       </Link>
       <Link 
         href={route('due.index')} 
         className="px-4 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       >
-        ค้างชำระ
+        ຄ້າຈ່າຍ
       </Link>
     </div>
   )
@@ -271,8 +271,8 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อ', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້', url: undefined }
   ]
 
   return (
@@ -281,13 +281,13 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-gray-500 dark:text-gray-400">รายการ</div>
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">รายการสั่งซื้อ</h1>
+            <div className="text-sm text-gray-500 dark:text-gray-400">ລາຍການ</div>
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ລາຍການສັ່ງຊື້</h1>
           </div>
         </div>
       }
     >
-      <Head title="รายการสั่งซื้อ" />
+      <Head title="ລາຍການສັ່ງຊື້" />
       
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -305,7 +305,7 @@ export default function Index({ auth, orders, filters }: OrdersProps) {
             sortField={filters.field}
             sortDirection={filters.direction}
             loading={loading}
-            title="รายการคำสั่งซื้อ"
+            title="ລາຍການຄໍາສັ່ງຊື້"
             actions={tableActions}
           />
         </div>

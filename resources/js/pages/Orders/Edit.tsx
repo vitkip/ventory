@@ -58,9 +58,9 @@ interface EditProps extends PageProps {
 
 export default function Edit({ auth, order, customers }: EditProps) {
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อ', url: route('orders.index') },
-    { title: 'แก้ไขคำสั่งซื้อ', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້', url: route('orders.index') },
+    { title: 'ແກ້ໄຂຄໍາສັ່ງຊື້', url: undefined }
   ]
 
   // สร้าง state สำหรับการจัดการข้อมูล
@@ -110,18 +110,18 @@ export default function Edit({ auth, order, customers }: EditProps) {
     e.preventDefault()
 
     if (orderDetails.length === 0) {
-      alert('กรุณามีสินค้าอย่างน้อย 1 รายการ')
+      alert('ຕ້ອງມີສິນຄ້າຢ່າງນ້ອຍ 1 ລາຍການ')
       return
     }
 
     const finalPay = typeof data.pay === 'string' ? parseInt(data.pay) : data.pay as number
     if (isNaN(finalPay) || finalPay < 0) {
-      alert('กรุณาระบุจำนวนเงินที่ชำระให้ถูกต้อง')
+      alert('ຕ້ອງບອກຈຳນວນເງີນທີ່ຈ່າຍໃຫ້ຖືກຕ້ອງ')
       return
     }
 
     if (finalPay > total) {
-      alert('จำนวนเงินที่ชำระไม่สามารถมากกว่ายอดรวมได้')
+      alert('ຈຳນວນເງີນທີ່ຈ່າຍບໍ່ສາມາດຫຼາຍກ່ອນຍອດລວມໄດ້')
       return
     }
 
@@ -148,12 +148,12 @@ export default function Edit({ auth, order, customers }: EditProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">แก้ไขคำสั่งซื้อ #{order.invoice_no}</h1>
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ແກ້ໄຂຄຳສັ່ງຊື້ #{order.invoice_no}</h1>
           </div>
         </div>
       }
     >
-      <Head title={`แก้ไขคำสั่งซื้อ: ${order.invoice_no}`} />
+      <Head title={`ແກ້ໄຂຄໍາສັ່ງຊື້: ${order.invoice_no}`} />
 
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -164,7 +164,7 @@ export default function Edit({ auth, order, customers }: EditProps) {
               <div className="lg:col-span-2">
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">รายการสินค้า</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ລາຍການສິນຄ້າ</h3>
                   </div>
                   <div className="p-6">
                     <div className="rounded-md bg-blue-50 dark:bg-blue-900 p-4 mb-6">
@@ -176,7 +176,7 @@ export default function Edit({ auth, order, customers }: EditProps) {
                         </div>
                         <div className="ml-3">
                           <p className="text-sm text-blue-700 dark:text-blue-200">
-                            การแก้ไขคำสั่งซื้อจะไม่สามารถเพิ่มสินค้าได้ แต่สามารถลบสินค้าออกจากรายการได้
+                           ການແກ້ໄຂຄຳສັ່ງຊື້ຈະບໍ່ສາມາດເພີ່ມສິນຄ້າໄດ້ ແຕ່ສາມາດລືບສິນຄ້າອອກຈາກລາຍການໄດ້
                           </p>
                         </div>
                       </div>
@@ -186,12 +186,12 @@ export default function Edit({ auth, order, customers }: EditProps) {
                       <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead className="bg-gray-50 dark:bg-gray-700">
                           <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ลำดับ</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ชื่อสินค้า</th>
-                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ราคา</th>
-                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">จำนวน</th>
-                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">รวม</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">จัดการ</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລຳດບ</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຊື່ສິນຄ້າ</th>
+                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລາຄາ</th>
+                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຈຳນວນ</th>
+                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລວມ</th>
+                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຈັດການ</th>
                           </tr>
                         </thead>
                         <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -200,40 +200,40 @@ export default function Edit({ auth, order, customers }: EditProps) {
                               <tr key={detail.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{index + 1}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{detail.product.name}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900 dark:text-gray-100">฿{formatPrice(detail.unitcost)}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900 dark:text-gray-100">₭{formatPrice(detail.unitcost)}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900 dark:text-gray-100">{detail.quantity}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900 dark:text-gray-100">฿{formatPrice(detail.total)}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900 dark:text-gray-100">₭{formatPrice(detail.total)}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
                                   <button 
                                     type="button"
                                     className="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                                     onClick={() => handleRemoveProduct(index)}
                                   >
-                                    ลบ
+                                    ລືບ
                                   </button>
                                 </td>
                               </tr>
                             ))
                           ) : (
                             <tr>
-                              <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">ไม่มีรายการสินค้า</td>
+                              <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">ບໍ່ມີລາຍການສິນຄ້າ</td>
                             </tr>
                           )}
                         </tbody>
                         <tfoot className="bg-gray-50 dark:bg-gray-700">
                           <tr>
-                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-400">รวม</td>
-                            <td className="px-6 py-4 text-center text-sm text-gray-900 dark:text-gray-100">฿{formatPrice(subTotal)}</td>
+                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-400">ລວມ</td>
+                            <td className="px-6 py-4 text-center text-sm text-gray-900 dark:text-gray-100">₭{formatPrice(subTotal)}</td>
                             <td></td>
                           </tr>
                           <tr>
-                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-400">ภาษีมูลค่าเพิ่ม 7%</td>
-                            <td className="px-6 py-4 text-center text-sm text-gray-900 dark:text-gray-100">฿{formatPrice(vat)}</td>
+                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-400">ພາສີມູນຄ່າເພີມ 7%</td>
+                            <td className="px-6 py-4 text-center text-sm text-gray-900 dark:text-gray-100">₭{formatPrice(vat)}</td>
                             <td></td>
                           </tr>
                           <tr>
-                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-bold text-gray-900 dark:text-gray-100">ยอดรวมทั้งสิ้น</td>
-                            <td className="px-6 py-4 text-center text-sm font-bold text-gray-900 dark:text-gray-100">฿{formatPrice(total)}</td>
+                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-bold text-gray-900 dark:text-gray-100">ຍອດລວມທັງໝົດ</td>
+                            <td className="px-6 py-4 text-center text-sm font-bold text-gray-900 dark:text-gray-100">₭{formatPrice(total)}</td>
                             <td></td>
                           </tr>
                         </tfoot>
@@ -246,19 +246,19 @@ export default function Edit({ auth, order, customers }: EditProps) {
               <div className="lg:col-span-1">
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลคำสั่งซื้อ</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນຄໍາສັ່ງຊື້</h3>
                   </div>
                   <div className="p-6 space-y-6">
                     <div>
                       <SelectInput
                         id="customer_id"
                         value={data.customer_id}
-                        label="ลูกค้า"
+                        label="ລູກຄ້າ"
                         onChange={(e) => setData('customer_id', e.target.value)}
                         error={errors.customer_id}
                         required
                       >
-                        <option value="">-- เลือกลูกค้า --</option>
+                        <option value="">-- ເລືອກລູກຄ້າ --</option>
                         {customers.map(customer => (
                           <option key={customer.id} value={customer.id}>{customer.name}</option>
                         ))}
@@ -287,16 +287,16 @@ export default function Edit({ auth, order, customers }: EditProps) {
                         error={errors.payment_type}
                         required
                       >
-                        <option value="เงินสด">เงินสด</option>
-                        <option value="โอนเงิน">โอนเงิน</option>
-                        <option value="บัตรเครดิต">บัตรเครดิต</option>
-                        <option value="เครดิต">เครดิต</option>
+                        <option value="ເງີນສົດ">ເງີນສົດ</option>
+                        <option value="ເງີນໂອນ">ເງີນໂອນ</option>
+                        <option value="ບັດເຄດິດ">ບັດເຄດິດ</option>
+                        <option value="ເຄດິດ">ເຄດິດ</option>
                       </SelectInput>
                       <InputError message={errors.payment_type} className="mt-2" />
                     </div>
 
                     <div>
-                      <InputLabel htmlFor="pay" value="จำนวนเงินที่ชำระ" />
+                      <InputLabel htmlFor="pay" value="ຈຳນວນເງີນທີ່ຈ່າຍ" />
                       <TextInput
                         id="pay"
                         type="number"
@@ -309,7 +309,7 @@ export default function Edit({ auth, order, customers }: EditProps) {
                       />
                       <InputError message={errors.pay} className="mt-2" />
                       <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        จำนวนเงินที่ค้างชำระ: ฿{formatPrice(total - (typeof data.pay === 'string' ? parseInt(data.pay || '0') : (data.pay || 0)))}
+                        ຈຳນວນເງີນທີ່ຄ້າງຈາຍ: ฿{formatPrice(total - (typeof data.pay === 'string' ? parseInt(data.pay || '0') : (data.pay || 0)))}
                       </p>
                     </div>
 
@@ -317,7 +317,7 @@ export default function Edit({ auth, order, customers }: EditProps) {
                       <TextArea
                         id="note"
                         value={data.note}
-                        label="หมายเหตุ"
+                        label="ໝາຍເຫດ"
                         onChange={(e) => setData('note', e.target.value)}
                         error={errors.note}
                         rows={2}
@@ -331,14 +331,14 @@ export default function Edit({ auth, order, customers }: EditProps) {
                         href={route('orders.show', order.id)} 
                         className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
                       >
-                        ยกเลิก
+                        ຍົກເລີກ
                       </Link>
                       <button 
                         type="submit" 
                         className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
                         disabled={processing || orderDetails.length === 0}
                       >
-                        {processing ? 'กำลังบันทึก...' : 'บันทึกคำสั่งซื้อ'}
+                        {processing ? 'ກຳລັງບັນທຶກ...' : 'ບັນທຶກຄໍາສັ່ງຊື'}
                       </button>
                     </div>
                   </div>

@@ -91,7 +91,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
     if (!selectedProduct || quantity <= 0) return
 
     if (quantity > selectedProduct.stock) {
-      alert(`สินค้าในคลังมีไม่พอ (มี ${selectedProduct.stock} ชิ้น)`)
+      alert(`ສິນຄ້າໃນຄັງມີບໍ່ພໍ (ມີ ${selectedProduct.stock} ອັນ)`)
       return
     }
 
@@ -114,7 +114,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
       const newQuantity = updatedItems[existingIndex].quantity + quantity
       
       if (newQuantity > selectedProduct.stock) {
-        alert(`สินค้าในคลังมีไม่พอ (มี ${selectedProduct.stock} ชิ้น)`)
+        alert(`ສິນຄ້າໃນຄັງມີບໍ່ພໍ (ມີ ${selectedProduct.stock} ອັນ)`)
         return
       }
       
@@ -169,23 +169,23 @@ export default function Create({ auth, customers, products }: CreateProps) {
     e.preventDefault()
 
     if (orderItems.length === 0) {
-      alert('กรุณาเพิ่มสินค้าอย่างน้อย 1 รายการ')
+      alert('ກະລຸນາເພີມສິນຄ້າຢ່າງນ້ອຍ 1 ລາຍການ')
       return
     }
 
     if (!data.customer_id) {
-      alert('กรุณาเลือกลูกค้า')
+      alert('ກະລຸນາເລືອກລູກຄ້າ')
       return
     }
 
     const finalPay = parseInt(data.pay?.toString() || '0')
     if (isNaN(finalPay) || finalPay < 0) {
-      alert('กรุณาระบุจำนวนเงินที่ชำระให้ถูกต้อง')
+      alert('ກະລຸນາບອກຈຳນວນເງີນທີ່ຊຳລະໃຫ້ຖືກ')
       return
     }
 
     if (finalPay > total) {
-      alert('จำนวนเงินที่ชำระไม่สามารถมากกว่ายอดรวมได้')
+      alert('ຈຳນວນເງີນທີ່ຊຳລະບໍ່ສາມາຫຼາຍກ່ອນຍອດລວມ')
       return
     }
 
@@ -214,7 +214,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">เพิ่มคำสั่งซื้อใหม่</h1>
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ເພີມຄຳສັ່ງຊື້ໃໝ່</h1>
           </div>
         </div>
       }
@@ -230,7 +230,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
               <div className="lg:col-span-2">
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">รายการสินค้า</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ລາຍການສິນຄ້າ</h3>
                   </div>
                   <div className="p-6">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
@@ -241,7 +241,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
                           label="เลือกสินค้า"
                           onChange={handleProductChange}
                         >
-                          <option value="">-- เลือกสินค้า --</option>
+                          <option value="">-- ເລືອກສິນຄ້າ --</option>
                           {availableProducts.filter(p => p.stock > 0).map(product => (
                             <option key={product.id} value={product.id}>{product.name} ({product.stock})</option>
                           ))}
@@ -249,7 +249,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
                       </div>
                       <div className="md:col-span-2">
                         <div className="mb-3">
-                          <InputLabel htmlFor="quantity" value="จำนวน" />
+                          <InputLabel htmlFor="quantity" value="ຈຳນວນ" />
                           <TextInput
                             id="quantity"
                             type="number"
@@ -263,7 +263,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
                       </div>
                       <div className="md:col-span-4">
                         <div className="mb-3">
-                          <InputLabel htmlFor="price" value="ราคา" />
+                          <InputLabel htmlFor="price" value="ລາຄາ" />
                           <div className="flex">
                             <TextInput
                               id="price"
@@ -278,7 +278,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
                               onClick={handleAddProduct}
                               disabled={!selectedProduct}
                             >
-                              เพิ่มสินค้า
+                              ເພີມສິນຄ້າ
                             </button>
                           </div>
                         </div>
@@ -289,12 +289,12 @@ export default function Create({ auth, customers, products }: CreateProps) {
                       <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead className="bg-gray-50 dark:bg-gray-700">
                           <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ลำดับ</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ชื่อสินค้า</th>
-                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ราคา</th>
-                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">จำนวน</th>
-                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">รวม</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">จัดการ</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລຳດັບ</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຊື່ສິນຄ້າ</th>
+                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລາຄາ</th>
+                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຈຳນວນ</th>
+                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລວມ</th>
+                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຈັດການ</th>
                           </tr>
                         </thead>
                         <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -312,31 +312,31 @@ export default function Create({ auth, customers, products }: CreateProps) {
                                     className="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                                     onClick={() => handleRemoveProduct(index)}
                                   >
-                                    ลบ
+                                    ລືບ
                                   </button>
                                 </td>
                               </tr>
                             ))
                           ) : (
                             <tr>
-                              <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">ไม่มีรายการสินค้า</td>
+                              <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">ບໍ່ມີລາຍການສິນຄ້າ</td>
                             </tr>
                           )}
                         </tbody>
                         <tfoot className="bg-gray-50 dark:bg-gray-700">
                           <tr>
-                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-400">รวม</td>
+                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-400">ລວມ</td>
                             <td className="px-6 py-4 text-center text-sm text-gray-900 dark:text-gray-100">฿{formatPrice(subTotal)}</td>
                             <td></td>
                           </tr>
                           <tr>
-                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-400">ภาษีมูลค่าเพิ่ม 7%</td>
+                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-400">ພາສີມູນຄ່າເພີມ 7%</td>
                             <td className="px-6 py-4 text-center text-sm text-gray-900 dark:text-gray-100">฿{formatPrice(vat)}</td>
                             <td></td>
                           </tr>
                           <tr>
-                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-bold text-gray-900 dark:text-gray-100">ยอดรวมทั้งสิ้น</td>
-                            <td className="px-6 py-4 text-center text-sm font-bold text-gray-900 dark:text-gray-100">฿{formatPrice(total)}</td>
+                            <td colSpan={4} className="px-6 py-4 text-right text-sm font-bold text-gray-900 dark:text-gray-100">ຍອດລວມທັງໝົດ</td>
+                            <td className="px-6 py-4 text-center text-sm font-bold text-gray-900 dark:text-gray-100">₭{formatPrice(total)}</td>
                             <td></td>
                           </tr>
                         </tfoot>
@@ -349,7 +349,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
               <div className="lg:col-span-1">
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลคำสั่งซื้อ</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນຄໍາສັ່ງຊື້</h3>
                   </div>
                   <div className="p-6 space-y-6">
                     <div>
@@ -361,7 +361,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
                         error={errors.customer_id}
                         required
                       >
-                        <option value="">-- เลือกลูกค้า --</option>
+                        <option value="">-- ເລືອກລູກຄ້າ --</option>
                         {customers.map(customer => (
                           <option key={customer.id} value={customer.id}>{customer.name}</option>
                         ))}
@@ -390,10 +390,10 @@ export default function Create({ auth, customers, products }: CreateProps) {
                         error={errors.payment_type}
                         required
                       >
-                        <option value="เงินสด">เงินสด</option>
-                        <option value="โอนเงิน">โอนเงิน</option>
-                        <option value="บัตรเครดิต">บัตรเครดิต</option>
-                        <option value="เครดิต">เครดิต</option>
+                        <option value="ເງີນສົດ">ເງີນສົດ</option>
+                        <option value="ເງີນໂອນ">ເງີນໂອນ</option>
+                        <option value="ບັດເຄດິດ">ບັດເຄດິດ</option>
+                        <option value="ເຄດິດ">ເຄດິດ</option>
                       </SelectInput>
                       <InputError message={errors.payment_type} className="mt-2" />
                     </div>
@@ -412,7 +412,7 @@ export default function Create({ auth, customers, products }: CreateProps) {
                       />
                       <InputError message={errors.pay} className="mt-2" />
                       <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        จำนวนเงินที่ค้างชำระ: ฿{formatPrice(total - (parseInt(data.pay?.toString() || '0')))}
+                        ຈຳນວນເງີນທີ່ຄ້າງຈາຍ: ₭{formatPrice(total - (parseInt(data.pay?.toString() || '0')))}
                       </p>
                     </div>
 
@@ -434,14 +434,14 @@ export default function Create({ auth, customers, products }: CreateProps) {
                         href={route('orders.index')} 
                         className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
                       >
-                        ยกเลิก
+                        ຍົກເລີກ
                       </Link>
                       <button 
                         type="submit" 
                         className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
                         disabled={processing || orderItems.length === 0}
                       >
-                        {processing ? 'กำลังบันทึก...' : 'บันทึกคำสั่งซื้อ'}
+                        {processing ? 'ກຳລັງບັນທຶກ...' : 'ບັນທຶກຄຳສັ່ງຊື້'}
                       </button>
                     </div>
                   </div>
