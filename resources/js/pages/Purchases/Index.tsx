@@ -52,7 +52,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
   const columns = [
     {
       field: 'reference_no',
-      label: 'เลขที่อ้างอิง',
+      label: 'ເລກທີ່ອ້າງອິງ',
       sortable: true,
       render: (purchase: Purchase) => (
         <Link href={route('purchases.show', purchase.id)} className="text-blue-600 hover:text-blue-800 hover:underline">
@@ -62,7 +62,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
     },
     {
       field: 'supplier.name',
-      label: 'ซัพพลายเออร์',
+      label: 'ຊັບພາຍເອີ',
       sortable: true,
       render: (purchase: Purchase) => (
         <Link href={route('suppliers.show', purchase.supplier_id)} className="text-blue-600 hover:text-blue-800 hover:underline">
@@ -72,7 +72,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
     },
     {
       field: 'date',
-      label: 'วันที่',
+      label: 'ວັນທີ',
       sortable: true,
       render: (purchase: Purchase) => (
         <span>{purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString('th-TH') : '-'}</span>
@@ -80,15 +80,15 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
     },
     {
       field: 'total_amount',
-      label: 'ยอดรวม',
+      label: 'ຍອດລວມ',
       sortable: true,
       render: (purchase: Purchase) => (
-        <span>฿{(purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+        <span>₭{(purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
       )
     },
     {
       field: 'purchase_status',
-      label: 'สถานะการสั่งซื้อ',
+      label: 'ສະຖານະການສັ່ງຊື້',
       sortable: true,
       render: (purchase: Purchase) => {
         // ตรวจสอบว่ามี purchase_status ที่เป็น object และมี value หรือไม่
@@ -99,7 +99,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
         // ดึงค่า label จาก object หรือกำหนดค่า default ตาม value
         const statusLabel = typeof purchase.purchase_status === 'object' && purchase.purchase_status !== null 
           ? purchase.purchase_status.label 
-          : (statusValue === 0 ? 'รออนุมัติ' : 'อนุมัติแล้ว')
+          : (statusValue === 0 ? 'ຖາອະນຸຍາດ' : 'ອະນຸຍາດແລ້ວ')
         
         const statusInfo = statusValue === 0 
           ? { classes: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100', label: statusLabel }
@@ -114,7 +114,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
     },
     {
       field: 'payment_status',
-      label: 'สถานะการชำระเงิน',
+      label: 'ສະຖານະການຈ່າຍເງີນ',
       sortable: true,
       render: (purchase: Purchase) => {
         // ตรวจสอบว่ามี payment_status ที่เป็น object และมี value หรือไม่
@@ -125,7 +125,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
         // ดึงค่า label จาก object หรือกำหนดค่า default ตาม value
         const paymentStatusLabel = typeof purchase.payment_status === 'object' && purchase.payment_status !== null 
           ? purchase.payment_status.label 
-          : (paymentStatusValue === 0 ? 'ยังไม่ชำระ' : (paymentStatusValue === 1 ? 'ชำระบางส่วน' : 'ชำระแล้ว'))
+          : (paymentStatusValue === 0 ? 'ຍັງບໍ່ຈ່າຍ' : (paymentStatusValue === 1 ? 'ຈ່າຍບາງສ່ວນ' : 'ຈ່າຍແລ້ວ'))
         
         let statusInfo = {
           classes: '',
@@ -153,7 +153,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
     },
     {
       field: 'actions',
-      label: 'จัดการ',
+      label: 'ຈັດການ',
       className: 'w-1',
       render: (purchase: Purchase) => (
         <div className="flex space-x-2">
@@ -170,7 +170,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
               href={route('purchases.edit', purchase.id)} 
               className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-blue-600 text-white hover:bg-blue-700"
             >
-              แก้ไข
+              ແກ້ໄຂ
             </Link>
           )}
           <Link 
@@ -178,7 +178,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
             className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-cyan-600 text-white hover:bg-cyan-700"
             target="_blank"
           >
-            พิมพ์
+            ພິມ
           </Link>
         </div>
       )
@@ -242,7 +242,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
           <path d="M12 5l0 14" />
           <path d="M5 12l14 0" />
         </svg>
-        สร้างรายการสั่งซื้อใหม่
+        ສ້າງລາຍການສັ່ງຊື້ໃໝ່
       </Link>
     </>
   )
@@ -251,16 +251,16 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
   const tabs = (
     <div className="flex space-x-1 mb-4">
       <Link href={route('purchases.index')} className="px-3 py-2 text-sm font-medium border-b-2 border-blue-500 text-blue-600">
-        รายการทั้งหมด
+       ລາຍການທັງໝົດ
       </Link>
       <Link href={route('purchases.pending')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 border-b-2 border-transparent">
-        รออนุมัติ
+       ຖາອະນຸຍາດ
       </Link>
       <Link href={route('purchases.complete')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 border-b-2 border-transparent">
-        เสร็จสิ้น
+        ສຳເລັດ
       </Link>
       <Link href={route('purchases.due')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 border-b-2 border-transparent">
-        ค้างชำระ
+        ຄ້າງຈ່າຍ
       </Link>
     </div>
   )
@@ -276,8 +276,8 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อสินค้าเข้า', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້ສິນຄ້າເຂົ້າ', url: undefined }
   ]
 
   return (
@@ -288,7 +288,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between">
               <div>
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">รายการสั่งซื้อสินค้าเข้า</h2>
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">ລາຍການສັ່ງຊື້ສິນຄ້າເຂົ້າ</h2>
               </div>
               <div>
                 {tableActions}
@@ -298,7 +298,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
         </div>
       }
     >
-      <Head title="รายการสั่งซื้อสินค้าเข้า" />
+      <Head title="ລາຍການສັ່ງຊື້ສິນຄ້າເຂົ້າ" />
       
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -316,7 +316,7 @@ export default function Index({ auth, purchases, filters }: PurchasesProps) {
             sortField={filters.field}
             sortDirection={filters.direction}
             loading={loading}
-            title="รายการสั่งซื้อสินค้าเข้า"
+            title="ລາຍການສັ່ງຊື້ສິນຄ້າເຂົ້າ"
           />
         </div>
       </div>

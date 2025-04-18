@@ -54,7 +54,7 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
   const columns = [
     {
       field: 'reference_no',
-      label: 'เลขที่อ้างอิง',
+      label: 'ເລກທີ່ອ້າງອິງ',
       sortable: true,
       render: (purchase: Purchase) => (
         <Link 
@@ -67,7 +67,7 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
     },
     {
       field: 'supplier.name',
-      label: 'ซัพพลายเออร์',
+      label: 'ຊັບພາຍເອີ',
       sortable: true,
       render: (purchase: Purchase) => (
         <Link 
@@ -80,7 +80,7 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
     },
     {
       field: 'date',
-      label: 'วันที่',
+      label: 'ວັນທີ',
       sortable: true,
       render: (purchase: Purchase) => (
         <span>{purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString('th-TH') : '-'}</span>
@@ -88,15 +88,15 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
     },
     {
       field: 'total_amount',
-      label: 'ยอดรวม',
+      label: 'ຍອດລວມ',
       sortable: true,
       render: (purchase: Purchase) => (
-        <span>฿{(purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+        <span>₭{(purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
       )
     },
     {
       field: 'payment_status',
-      label: 'สถานะการชำระเงิน',
+      label: 'ສະຖານະການຈ່າຍເງີນ',
       sortable: true,
       render: (purchase: Purchase) => {
         let statusClass
@@ -114,16 +114,16 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
           // กำหนดค่า label ตามสถานะ
           switch (statusValue) {
             case 0:
-              statusLabel = 'ยังไม่ชำระ'
+              statusLabel = 'ຍັງບໍ່ໄດ້ຈ່າຍ'
               break
             case 1:
-              statusLabel = 'ชำระบางส่วน'
+              statusLabel = 'ຈ່າຍບາງສ່ວນ'
               break
             case 2:
-              statusLabel = 'ชำระแล้ว'
+              statusLabel = 'ຈ່າຍແລ້ວ'
               break
             default:
-              statusLabel = 'ไม่ทราบสถานะ'
+              statusLabel = 'ບໍ່ຮູສະຖານະ'
           }
         }
         
@@ -146,7 +146,7 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
     },
     {
       field: 'actions',
-      label: 'จัดการ',
+      label: 'ຈັດການ',
       className: 'w-1',
       render: (purchase: Purchase) => (
         <div className="flex space-x-2">
@@ -154,14 +154,14 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
             href={route('purchases.show', purchase.id)} 
             className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700"
           >
-            ดู
+            ເບີ່ງ
           </Link>
           <Link 
             href={route('purchases.print', purchase.id)} 
             className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-cyan-600 text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
             target="_blank"
           >
-            พิมพ์
+            ພິມ
           </Link>
         </div>
       )
@@ -220,19 +220,19 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
         href={route('purchases.index')} 
         className="py-4 px-6 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 border-b-2 border-transparent"
       >
-        รายการทั้งหมด
+        ລາຍການລວມທັງໝົດ
       </Link>
       <Link 
         href={route('purchases.approvedPurchases')} 
         className="py-4 px-6 text-sm font-medium text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400"
       >
-        รายการที่อนุมัติแล้ว
+        ລາຍການທີ່ຖ້າອະນຸຍາດ
       </Link>
       <Link 
         href={route('purchases.dailyPurchaseReport')} 
         className="py-4 px-6 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 border-b-2 border-transparent"
       >
-        รายงานประจำวัน
+        ລາຍງານປະຈຳວັນ
       </Link>
     </div>
   )
@@ -248,9 +248,9 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อ', url: route('purchases.index') },
-    { title: 'รายการที่อนุมัติแล้ว', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້', url: route('purchases.index') },
+    { title: 'ລາຍການທີ່ອະນຸຍາດແລ້ວ', url: undefined }
   ]
 
   return (
@@ -259,13 +259,13 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-gray-500 dark:text-gray-400">ระบบจัดการ</div>
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">รายการสั่งซื้อที่อนุมัติแล้ว</h2>
+            <div className="text-sm text-gray-500 dark:text-gray-400">ລະບົບຈັດການ</div>
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ລາຍການສັ່ງຊື້ທີ່ອະນຸຍາດແລ້ວ</h2>
           </div>
         </div>
       }
     >
-      <Head title="รายการสั่งซื้อที่อนุมัติแล้ว" />
+      <Head title="ລາຍການສັ່ງຊື້ທີ່ອະນຸຍາດແລ້ວ" />
       
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -284,7 +284,7 @@ export default function Approved({ auth, purchases, filters }: ApprovedProps) {
               sortField={filters.field}
               sortDirection={filters.direction}
               loading={loading}
-              title="รายการสั่งซื้อที่อนุมัติแล้ว"
+              title="ລາຍການສັ່ງຊື້ທີ່ອະນຸຍາດແລ້ວ"
             />
           </div>
         </div>

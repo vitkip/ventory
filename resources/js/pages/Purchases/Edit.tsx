@@ -227,10 +227,10 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อ', url: route('purchases.index') },
-    { title: purchase.reference_no ? purchase.reference_no : 'รายการสั่งซื้อ', url: route('purchases.show', purchase.id) },
-    { title: 'แก้ไขรายการสั่งซื้อ', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້', url: route('purchases.index') },
+    { title: purchase.reference_no ? purchase.reference_no : 'ລາຍການສັ່ງຊື້', url: route('purchases.show', purchase.id) },
+    { title: 'ແກ້ໄຂລາຍການສັ່ງຊື້', url: undefined }
   ]
 
   return (
@@ -239,12 +239,12 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">แก้ไขรายการสั่งซื้อ</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ແກ້ໄຂລາຍການສັ່ງຊື້</h2>
           </div>
         </div>
       }
     >
-      <Head title={`แก้ไขรายการสั่งซื้อ: ${purchase.reference_no || 'รายการสั่งซื้อ'}`} />
+      <Head title={`ແກ້ໄຂລາຍການສັ່ງຊື້: ${purchase.reference_no || 'ລາຍການສັ່ງຊື້'}`} />
 
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -255,7 +255,7 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
               <div className="md:col-span-2">
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
                   <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">สินค้า</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ສິນຄ້າ</h3>
                   </div>
                   <div className="p-6">
                     <div className="mb-6">
@@ -263,7 +263,7 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                         <input
                           type="text"
                           className="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
-                          placeholder="ค้นหาสินค้าด้วยชื่อหรือรหัส"
+                          placeholder="ຄົ້ນຫາສິນຄ້າດ້ວຍຊື່ຫຼືລະຫັດ"
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
                         />
@@ -273,7 +273,7 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                           onClick={searchProducts}
                           disabled={isSearching}
                         >
-                          {isSearching ? 'กำลังค้นหา...' : 'ค้นหา'}
+                          {isSearching ? 'ກຳລັງຄົນຫາ...' : 'ຄົ້ນຫາ'}
                         </button>
                       </div>
                       
@@ -293,10 +293,10 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                                 </div>
                                 <div className="flex space-x-2">
                                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100">
-                                    ฿{(product.unit_price / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}
+                                    ₭{(product.unit_price / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}
                                   </span>
                                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-                                    คงเหลือ: {product.quantity}
+                                    ຄົງເຫຼືອ: {product.quantity}
                                   </span>
                                 </div>
                               </button>
@@ -310,10 +310,10 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                       <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead className="bg-gray-50 dark:bg-gray-700">
                           <tr>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">สินค้า</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-24">จำนวน</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-36">ราคา/หน่วย</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-32">รวม</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ສິນຄ້າ</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-24">ຈຳນວນ</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-36">ລາຄາ/ໜ່ວຍ</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-32">ລວມ</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-10"></th>
                           </tr>
                         </thead>
@@ -321,7 +321,7 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                           {purchaseItems.length === 0 ? (
                             <tr>
                               <td colSpan={5} className="px-6 py-8 text-center">
-                                <div className="text-gray-500 dark:text-gray-400">ยังไม่มีสินค้าในรายการ ค้นหาและเพิ่มสินค้า</div>
+                                <div className="text-gray-500 dark:text-gray-400">ຍັງບໍ່ມີສິນຄ້າໃນລາຍການ ຄົນຫາແລະເພີ່ມສິນຄ້າ</div>
                               </td>
                             </tr>
                           ) : (
@@ -354,7 +354,7 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                                   </div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
-                                  ฿{item.sub_total.toLocaleString('th-TH', { minimumFractionDigits: 2 })}
+                                  ₭{item.sub_total.toLocaleString('th-TH', { minimumFractionDigits: 2 })}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                   <button
@@ -375,8 +375,8 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                         </tbody>
                         <tfoot className="bg-gray-50 dark:bg-gray-700">
                           <tr>
-                            <th colSpan={3} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ยอดรวมทั้งสิ้น:</th>
-                            <th colSpan={2} className="px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100">฿{totalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
+                            <th colSpan={3} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຍອດລວມທັງໝົດ:</th>
+                            <th colSpan={2} className="px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100">₭{totalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
                           </tr>
                         </tfoot>
                       </table>
@@ -388,11 +388,11 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
               <div className="md:col-span-1">
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
                   <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลทั่วไป</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນທົ່ວໄປ</h3>
                   </div>
                   <div className="p-6">
                     <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="reference_no">เลขที่อ้างอิง</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="reference_no">ເລກທີອ້າງອິງ</label>
                       <input
                         id="reference_no"
                         type="text"
@@ -405,7 +405,7 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="supplier_id">ซัพพลายเออร์</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="supplier_id">ຊັບພາຍເອີ</label>
                       <select
                         id="supplier_id"
                         className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm disabled:opacity-50"
@@ -413,7 +413,7 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                         onChange={(e) => setData('supplier_id', e.target.value)}
                         disabled // ไม่อนุญาตให้เปลี่ยนซัพพลายเออร์เมื่อแก้ไข
                       >
-                        <option value="">เลือกซัพพลายเออร์</option>
+                        <option value="">ເລືອກຊັບພາຍເອີ</option>
                         {suppliers.map((supplier) => (
                           <option key={supplier.id} value={supplier.id}>
                             {supplier.name}
@@ -424,7 +424,7 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="purchase_date">วันที่สั่งซื้อ</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="purchase_date">ວັນທີສັ່ງຊື້</label>
                       <input
                         id="purchase_date"
                         type="date"
@@ -436,37 +436,37 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="purchase_status">สถานะการสั่งซื้อ</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="purchase_status">ສະຖານະການສັ່ງຊື້</label>
                       <select
                         id="purchase_status"
                         className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                         value={data.purchase_status}
                         onChange={(e) => setData('purchase_status', e.target.value)}
                       >
-                        <option value="0">รออนุมัติ</option>
-                        <option value="1">เสร็จสิ้น</option>
+                        <option value="0">ຖ້າອະນນຸຍາດ</option>
+                        <option value="1">ສຳເລັດ</option>
                       </select>
                       {errors.purchase_status && <div className="text-red-500 text-xs mt-1">{errors.purchase_status}</div>}
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="payment_status">สถานะการชำระเงิน</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="payment_status">ສະຖານະການຈ່າຍເງີນ</label>
                       <select
                         id="payment_status"
                         className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm disabled:opacity-50"
                         value={data.payment_status}
                         disabled
                       >
-                        <option value="0">ยังไม่ชำระ</option>
-                        <option value="1">ชำระบางส่วน</option>
-                        <option value="2">ชำระแล้ว</option>
+                        <option value="0">ຍັງບໍ່ທັນຈາຍ</option>
+                        <option value="1">ຈ່າຍບາງສ່ວນ</option>
+                        <option value="2">ຈ່າຍແລ້ວ</option>
                       </select>
-                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">สถานะการชำระเงินจะเปลี่ยนแปลงอัตโนมัติตามยอดเงินที่ชำระ</p>
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">ສະຖານະການຈາຍເງີນຈະປ່ຽນແປງອັດຕະໂນມັດຕາມຍອດເງີນທີຈ່າຍ</p>
                       {errors.payment_status && <div className="text-red-500 text-xs mt-1">{errors.payment_status}</div>}
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="paid_amount">ยอดเงินที่ชำระแล้ว</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="paid_amount">ຍອດເງີນທີຈ່າຍແລ້ວ</label>
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm">฿</span>
                         <input
@@ -480,12 +480,12 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                           step="0.01"
                         />
                       </div>
-                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">ยอดรวมทั้งสิ้น: ฿{totalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2 })}</p>
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">ຍອດລວມທັງໝົດ: ₭{totalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2 })}</p>
                       {errors.paid_amount && <div className="text-red-500 text-xs mt-1">{errors.paid_amount}</div>}
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="purchase_note">หมายเหตุ</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="purchase_note">ໝາຍເຫດ</label>
                       <textarea
                         id="purchase_note"
                         className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
@@ -503,14 +503,14 @@ export default function Edit({ auth, purchase, suppliers }: EditProps) {
                     href={route('purchases.show', purchase.id)} 
                     className="inline-flex justify-center items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150 flex-1"
                   >
-                    ยกเลิก
+                    ຍົກເລີກ
                   </Link>
                   <button 
                     type="submit" 
                     className="inline-flex justify-center items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 disabled:opacity-25 flex-1"
                     disabled={processing}
                   >
-                    {processing ? 'กำลังบันทึก...' : 'บันทึกรายการ'}
+                    {processing ? 'ກຳລັງບັນທຶກ...' : 'ບັນທຶກລາຍການ'}
                   </button>
                 </div>
               </div>

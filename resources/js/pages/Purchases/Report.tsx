@@ -83,22 +83,22 @@ export default function Report({
   const tabs = (
     <div className="flex space-x-1 mb-4">
       <Link href={route('purchases.index')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300  border-transparent">
-        รายการทั้งหมด
+       ລາຍການທັງໝົດ
       </Link>
       <Link href={route('purchases.approvedPurchases')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300  border-transparent">
-        รายการที่อนุมัติแล้ว
+       ລາຍການທີ່ຖ້າອະນຸຍາດ
       </Link>
       <Link href={route('purchases.dailyPurchaseReport')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 border-transparent">
-        รายงานประจำวัน
+       ລາຍງານປະຈຳວັນ
       </Link>
       <Link href={route('purchases.getPurchaseReport')} className="px-3 py-2 text-sm font-medium border-b-2 border-blue-500 text-blue-600">
-        ออกรายงาน
+        ອອກລາຍງານ
       </Link>
     </div>
   )
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
     { title: 'รายการสั่งซื้อ', url: route('purchases.index') },
     { title: 'ออกรายงาน', url: undefined }
   ]
@@ -111,14 +111,14 @@ export default function Report({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">ออกรายงานการสั่งซื้อ</h2>
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">ອອກລາຍງານການສັ່ງຊື້</h2>
               </div>
             </div>
           </div>
         </div>
       }
     >
-      <Head title="ออกรายงานการสั่งซื้อ" />
+      <Head title="ອອກລາຍງານການສັ່ງຊື້" />
       
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -132,7 +132,7 @@ export default function Report({
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
                     <label htmlFor="start_date" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      วันที่เริ่มต้น
+                      ວັນທີເລີມຕົ້ນ  
                     </label>
                     <input
                       type="date"
@@ -147,7 +147,7 @@ export default function Report({
                   
                   <div>
                     <label htmlFor="end_date" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      วันที่สิ้นสุด
+                      ວັນທີຊິນສຸດ
                     </label>
                     <input
                       type="date"
@@ -162,7 +162,7 @@ export default function Report({
                   
                   <div>
                     <label htmlFor="supplier_id" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      ซัพพลายเออร์
+                      ຊັບພາຍເອີ
                     </label>
                     <select
                       id="supplier_id"
@@ -180,7 +180,7 @@ export default function Report({
                   
                   <div>
                     <label htmlFor="status" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      สถานะคำสั่งซื้อ
+                      ສະຖານະການສັ່ງຊື້
                     </label>
                     <select
                       id="status"
@@ -189,16 +189,16 @@ export default function Report({
                       onChange={handleChange}
                       className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     >
-                      <option value="">ทั้งหมด</option>
-                      <option value="0">รออนุมัติ</option>
-                      <option value="1">อนุมัติแล้ว</option>
-                      <option value="2">ยกเลิก</option>
+                      <option value="">ທັງໝົດ</option>
+                      <option value="0">ຖ້າອະນນຸຍາດ</option>
+                      <option value="1">ອະນຸຍາດແລ້ວ</option>
+                      <option value="2">ຍົກເລີກ</option>
                     </select>
                   </div>
                   
                   <div>
                     <label htmlFor="payment_status" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      สถานะการชำระเงิน
+                     ສະຖານະການຈ່າຍເງີນ
                     </label>
                     <select
                       id="payment_status"
@@ -207,10 +207,10 @@ export default function Report({
                       onChange={handleChange}
                       className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     >
-                      <option value="">ทั้งหมด</option>
-                      <option value="0">ยังไม่ชำระ</option>
-                      <option value="1">ชำระบางส่วน</option>
-                      <option value="2">ชำระแล้ว</option>
+                      <option value="">ທັງໝົດ</option>
+                      <option value="0">ຍັງບໍ່ຈ່າຍ</option>
+                      <option value="1">ຈ່າຍບາງສ່ວນ</option>
+                      <option value="2">ຈ່າຍແລ້ວ</option>
                     </select>
                   </div>
                   
@@ -225,7 +225,7 @@ export default function Report({
                           <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
                           <path d="M21 21l-6 -6" />
                         </svg>
-                        ค้นหา
+                        ຄົ້ນຫາ
                       </button>
                       
                       <button
@@ -239,7 +239,7 @@ export default function Report({
                           <path d="M7 11l5 5l5 -5" />
                           <path d="M12 4l0 12" />
                         </svg>
-                        ส่งออกรายงาน
+                        ສົ່ງອອກລາຍງານ 
                       </button>
                     </div>
                   </div>

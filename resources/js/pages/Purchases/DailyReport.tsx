@@ -56,7 +56,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
   const columns = [
     {
       field: 'reference_no',
-      label: 'เลขที่อ้างอิง',
+      label: 'ເລກທີ່ອ້າງອິງ',
       sortable: true,
       render: (purchase: Purchase) => (
         <Link href={route('purchases.show', purchase.id)} className="text-blue-600 hover:text-blue-800 hover:underline">
@@ -66,7 +66,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
     },
     {
       field: 'supplier.name',
-      label: 'ซัพพลายเออร์',
+      label: 'ຊັບພາຍເອີ',
       sortable: true,
       render: (purchase: Purchase) => (
         <Link href={route('suppliers.show', purchase.supplier_id)} className="text-blue-600 hover:text-blue-800 hover:underline">
@@ -76,7 +76,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
     },
     {
       field: 'purchase_date',
-      label: 'วันที่ซื้อ',
+      label: 'ວັນທີຊື້',
       sortable: true,
       render: (purchase: Purchase) => {
         // ตรวจสอบว่ามี purchase_date หรือไม่ ถ้าไม่มีให้ดูว่ามี date หรือไม่ด้วย optional chaining
@@ -91,15 +91,15 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
     },
     {
       field: 'total_amount',
-      label: 'ยอดรวม',
+      label: 'ຍອດລວມ',
       sortable: true,
       render: (purchase: Purchase) => (
-        <span>฿{(purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+        <span>₭{(purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
       )
     },
     {
       field: 'payment_status',
-      label: 'สถานะการชำระเงิน',
+      label: 'ສະຖານະການຊຳລະ',
       sortable: true,
       render: (purchase: Purchase) => {
         // ตรวจสอบว่ามี payment_status ที่เป็น object และมี value หรือไม่
@@ -110,7 +110,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
         // ดึงค่า label จาก object หรือกำหนดค่า default ตาม value
         const paymentStatusLabel = typeof purchase.payment_status === 'object' && purchase.payment_status !== null 
           ? purchase.payment_status.label 
-          : (paymentStatusValue === 0 ? 'ยังไม่ชำระ' : (paymentStatusValue === 1 ? 'ชำระบางส่วน' : 'ชำระแล้ว'))
+          : (paymentStatusValue === 0 ? 'ຍັງບໍ່ໄດ້ຈ່າຍ' : (paymentStatusValue === 1 ? 'ຈ່າຍແລ້ວບາງສ່ວນ' : 'ຈ່າຍແລ້ວ'))
         
         let statusInfo = {
           classes: '',
@@ -138,7 +138,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
     },
     {
       field: 'actions',
-      label: 'จัดการ',
+      label: 'ຈັດການ',
       className: 'w-1',
       render: (purchase: Purchase) => (
         <div className="flex space-x-2">
@@ -146,14 +146,14 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
             href={route('purchases.show', purchase.id)} 
             className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200"
           >
-            ดู
+            ເບີ່ງ
           </Link>
           <Link 
             href={route('purchases.print', purchase.id)} 
             className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-cyan-600 text-white hover:bg-cyan-700"
             target="_blank"
           >
-            พิมพ์
+            ພິມ
           </Link>
         </div>
       )
@@ -209,16 +209,16 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
   const tabs = (
     <div className="flex space-x-1 mb-4">
       <Link href={route('purchases.index')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 border-b-2 border-transparent">
-        รายการทั้งหมด
+        ລາຍການທັງໝົດ
       </Link>
       <Link href={route('purchases.approvedPurchases')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 border-b-2 border-transparent">
-        รายการที่อนุมัติแล้ว
+       ລາຍການຖ້າອະນຸຍາດ
       </Link>
       <Link href={route('purchases.dailyPurchaseReport')} className="px-3 py-2 text-sm font-medium border-b-2 border-blue-500 text-blue-600">
-        รายงานประจำวัน
+        ລາຍການປະຈຳວັນ
       </Link>
       <Link href={route('purchases.getPurchaseReport')} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 border-b-2 border-transparent">
-        ออกรายงาน
+        ອອກລາຍງານ
       </Link>
     </div>
   )
@@ -234,9 +234,9 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อ', url: route('purchases.index') },
-    { title: 'รายงานประจำวัน', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້', url: route('purchases.index') },
+    { title: 'ລາຍງານປະຈຳວັນ', url: undefined }
   ]
 
   // สร้างปุ่มสำหรับส่วนหัว
@@ -251,7 +251,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
         <path d="M7 11l5 5l5 -5" />
         <path d="M12 4l0 12" />
       </svg>
-      ออกรายงาน
+      ອອກລາຍງານ
     </Link>
   )
 
@@ -263,7 +263,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">รายงานการสั่งซื้อประจำวัน</h2>
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">ລາຍງານການສັ່ງຊື້ປະຈຳວັນ</h2>
               </div>
               <div>
                 {tableActions}
@@ -273,7 +273,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
         </div>
       }
     >
-      <Head title="รายงานการสั่งซื้อประจำวัน" />
+      <Head title="ລາຍງານການສັ່ງຊື້ປະຈຳວັນ" />
       
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -285,7 +285,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
             <div>
               <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                 <div className="px-4 py-5 sm:p-6">
-                  <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">วันที่</div>
+                  <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">ວັນທີ</div>
                   <div className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
                     {new Date(today).toLocaleDateString('th-TH', {
                       weekday: 'long',
@@ -300,9 +300,9 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
             <div>
               <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                 <div className="px-4 py-5 sm:p-6">
-                  <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">ยอดรวมการสั่งซื้อวันนี้</div>
+                  <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">ຍອດລວມການສັ່ງຊື້ວັນນີ້</div>
                   <div className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                    ฿{(total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}
+                    ₭{(total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}
                   </div>
                 </div>
               </div>
@@ -319,7 +319,7 @@ export default function DailyReport({ auth, purchases, filters, today, total_amo
             sortField={filters.field}
             sortDirection={filters.direction}
             loading={loading}
-            title={`รายงานการสั่งซื้อประจำวันที่ ${new Date(today).toLocaleDateString('th-TH')}`}
+            title={`ລາຍງານການສັ່ງຊື້ປະຈຳວັນທີ ${new Date(today).toLocaleDateString('th-TH')}`}
           />
         </div>
       </div>

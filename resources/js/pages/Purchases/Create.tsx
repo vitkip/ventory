@@ -53,9 +53,9 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
   })
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อสินค้าเข้า', url: route('purchases.index') },
-    { title: 'เพิ่มรายการใหม่', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້ສິນຄ້າ', url: route('purchases.index') },
+    { title: 'ເພີ່ມລາຍການໃໝ່', url: undefined }
   ]
 
   useEffect(() => {
@@ -151,7 +151,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
     e.preventDefault()
     
     if (purchaseItems.length === 0) {
-      alert('กรุณาเพิ่มสินค้าอย่างน้อย 1 รายการ')
+      alert('ກະລຸນາເພີ່ມສິນຄ້າຢ່າງນ້ອຍ 1 ລາຍການ')
       return
     }
     
@@ -187,12 +187,12 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">เพิ่มรายการสั่งซื้อใหม่</h2>
+            <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">ເພີ່ມລາຍການສັ່ງຊື້ໃໝ່</h2>
           </div>
         </div>
       }
     >
-      <Head title="เพิ่มรายการสั่งซื้อใหม่" />
+      <Head title="ເພີ່ມລາຍການສັ່ງຊື້ໃໝ່" />
 
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -203,12 +203,12 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
               <div className="lg:col-span-4">
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                   <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">ข้อมูลการสั่งซื้อ</h3>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">ຂໍ້ມູນການສັ່ງຊື້</h3>
                   </div>
                   <div className="p-6">
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="reference_no">
-                        เลขที่อ้างอิง <span className="text-red-500">*</span>
+                        ເລກທີ່ອ້າງອິງ <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="reference_no"
@@ -223,7 +223,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
 
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="supplier_id">
-                        ซัพพลายเออร์ <span className="text-red-500">*</span>
+                        ຊັບພາຍເອີ <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="supplier_id"
@@ -232,7 +232,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                         onChange={(e) => setData('supplier_id', e.target.value)}
                         required
                       >
-                        <option value="">เลือกซัพพลายเออร์</option>
+                        <option value="">ເລືອກຊັບພາຍເອີ</option>
                         {suppliers.map((supplier) => (
                           <option key={supplier.id} value={supplier.id}>{supplier.name}</option>
                         ))}
@@ -242,7 +242,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
 
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="purchase_date">
-                        วันที่สั่งซื้อ <span className="text-red-500">*</span>
+                        ວັນທີສັ່ງຊື້ <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="purchase_date"
@@ -257,7 +257,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
 
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="purchase_status">
-                        สถานะการสั่งซื้อ <span className="text-red-500">*</span>
+                       ສະຖານະການສັ່ງຊື້ <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="purchase_status"
@@ -266,15 +266,15 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                         onChange={(e) => setData('purchase_status', e.target.value)}
                         required
                       >
-                        <option value="0">รออนุมัติ</option>
-                        <option value="1">เสร็จสิ้น</option>
+                        <option value="0">ຖ້າອະນນຸຍາດ</option>
+                        <option value="1">ສຳເລັດ</option>
                       </select>
                       {errors.purchase_status && <p className="mt-2 text-sm text-red-600">{errors.purchase_status}</p>}
                     </div>
 
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="payment_status">
-                        สถานะการชำระเงิน <span className="text-red-500">*</span>
+                       ສະຖານະການຈ່າຍເງີນ <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="payment_status"
@@ -283,9 +283,9 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                         onChange={(e) => setData('payment_status', e.target.value)}
                         required
                       >
-                        <option value="0">ยังไม่ชำระ</option>
-                        <option value="1">ชำระบางส่วน</option>
-                        <option value="2">ชำระแล้ว</option>
+                        <option value="0">ຍັງບໍ່ໄດ້ຈ່າຍ</option>
+                        <option value="1">ຈ່າຍບາງສ່ວນ</option>
+                        <option value="2">ຈ່າຍແລ້ວ</option>
                       </select>
                       {errors.payment_status && <p className="mt-2 text-sm text-red-600">{errors.payment_status}</p>}
                     </div>
@@ -293,7 +293,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                     {data.payment_status === '1' && (
                       <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="paid_amount">
-                          จำนวนเงินที่ชำระแล้ว <span className="text-red-500">*</span>
+                          ຈຳນວນເງີນທີ່ຈ່າຍແລ້ວ <span className="text-red-500">*</span>
                         </label>
                         <div className="relative rounded-md shadow-sm">
                           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -316,7 +316,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
 
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="purchase_note">
-                        หมายเหตุ
+                        ໝາຍເຫດ
                       </label>
                       <textarea
                         id="purchase_note"
@@ -335,7 +335,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-4">
                   <div className="p-6">
                     <div className="border-gray-200 pb-4 mb-4">
-                      <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">รายละเอียดสินค้า</h3>
+                      <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">ລາຍລະອດຽດສິນຄ້າ</h3>
                     </div>
 
                     <div className="mb-6">
@@ -344,7 +344,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                           type="text"
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
-                          placeholder="ค้นหาสินค้า..."
+                          placeholder="ຄົ້ນຫາສິນຄ້າ..."
                           className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         />
                         <button
@@ -352,7 +352,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                           onClick={searchProducts}
                           className="absolute right-2 top-1/2 transform -translate-y-1/2 px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                         >
-                          ค้นหา
+                          ຄົ້ນຫາ
                         </button>
                       </div>
                     </div>
@@ -362,13 +362,13 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                           <thead className="bg-gray-50 dark:bg-gray-700">
                             <tr>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">รหัสสินค้า</th>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ชื่อสินค้า</th>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ราคา</th>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">สต็อก</th>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">จำนวน</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລະຫັດສິນຄ້າ</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ຊື່ສິນຄ້າ</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລາຄາ</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ສະຕອກ</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ຈຳນວນ</th>
                               <th scope="col" className="relative px-6 py-3">
-                                <span className="sr-only">เพิ่ม</span>
+                                <span className="sr-only">ເພີມ</span>
                               </th>
                             </tr>
                           </thead>
@@ -400,7 +400,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                                     onClick={() => addToCart(product)}
                                     className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
                                   >
-                                    เพิ่ม
+                                    ເພີມ
                                   </button>
                                 </td>
                               </tr>
@@ -415,13 +415,13 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                           <thead className="bg-gray-50 dark:bg-gray-700">
                             <tr>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">รหัสสินค้า</th>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ชื่อสินค้า</th>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ราคาต่อหน่วย</th>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">จำนวน</th>
-                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ราคารวม</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລະຫັດສິນຄ້າ</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ຊື່ສິນຄ້າ</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລາຄາຕໍ່ໜ່ວຍ</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ຈຳນວນ</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລາຄາລວມ</th>
                               <th scope="col" className="relative px-6 py-3">
-                                <span className="sr-only">ลบ</span>
+                                <span className="sr-only">ລົບ</span>
                               </th>
                             </tr>
                           </thead>
@@ -450,7 +450,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                                   />
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
-                                  ฿{((item.unit_price * item.quantity) / 100).toFixed(2)}
+                                  ₭{((item.unit_price * item.quantity) / 100).toFixed(2)}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                   <button
@@ -458,7 +458,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                                     onClick={() => removeItem(index)}
                                     className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                                   >
-                                    ลบ
+                                    ລົບ
                                   </button>
                                 </td>
                               </tr>
@@ -467,7 +467,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                           <tfoot className="bg-gray-50 dark:bg-gray-700">
                             <tr>
                               <td colSpan={4} className="px-6 py-4 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
-                                ยอดรวม:
+                                ຍອດລວມ:
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
                                 ฿{(totalAmount / 100).toFixed(2)}
@@ -482,8 +482,8 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                         <svg className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m-8-4l8 4m8 0l-8 4m8-4l-8 4m-8-4l8 4" />
                         </svg>
-                        <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-gray-100">ไม่มีสินค้า</h3>
-                        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">กรุณาค้นหาและเพิ่มสินค้าเพื่อทำรายการสั่งซื้อ</p>
+                        <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-gray-100">ບໍ່ມີສິນຄ້າ</h3>
+                        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">ກະລຸນາຄົນຫາ ແລະ ເພີ່ມສິນຄ້າເພື່ອທຳລາຍການສັ່ງຊື້</p>
                       </div>
                     )}
 
@@ -492,7 +492,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                         href={route('purchases.index')}
                         className="inline-flex items-center px-4 py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest hover:bg-gray-300 active:bg-gray-400 focus:outline-none focus:border-gray-500 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                       >
-                        ยกเลิก
+                        ຍົກເລີກ
                       </Link>
                       <button
                         type="submit"
@@ -503,7 +503,7 @@ export default function Create({ auth, suppliers, reference_no }: CreateProps) {
                             : 'bg-blue-600 hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:ring-blue-500'
                         }`}
                       >
-                        {processing ? 'กำลังบันทึก...' : 'บันทึก'}
+                        {processing ? 'ກຳລັງບັນທຶກ...' : 'ບັນທຶກ'}
                       </button>
                     </div>
                   </div>

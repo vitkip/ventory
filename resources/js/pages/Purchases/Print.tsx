@@ -78,7 +78,7 @@ export default function Print({ purchase, company }: PrintProps) {
 
   return (
     <>
-      <Head title={`พิมพ์ใบสั่งซื้อ #${purchase.reference_no || 'ใหม่'}`} />
+      <Head title={`ພິມໃບສັ່ງຊື້ #${purchase.reference_no || 'ใหม่'}`} />
       
       <div className="print:hidden p-4 text-right">
         <button 
@@ -91,7 +91,7 @@ export default function Print({ purchase, company }: PrintProps) {
             <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
             <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z"></path>
           </svg>
-          พิมพ์
+          ພິມ
         </button>
       </div>
       
@@ -100,11 +100,11 @@ export default function Print({ purchase, company }: PrintProps) {
           <div className="p-6">
             <div className="flex justify-between mb-6">
               <div>
-                <h2 className="text-2xl font-semibold mb-1">ใบสั่งซื้อ #{purchase.reference_no || 'ใหม่'}</h2>
+                <h2 className="text-2xl font-semibold mb-1">ໃບສັ່ງຊື້ #{purchase.reference_no || 'ใหม่'}</h2>
                 <div className="text-gray-700 dark:text-gray-300">
-                  <div className="text-xl font-semibold mb-2">ใบสั่งซื้อ</div>
-                  <div className="text-gray-500 dark:text-gray-400">เลขที่: {purchase.reference_no || '-'}</div>
-                  <div className="text-gray-500 dark:text-gray-400">วันที่: {purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString('th-TH') : '-'}</div>
+                  <div className="text-xl font-semibold mb-2">ໃບສັ່ງຊື້</div>
+                  <div className="text-gray-500 dark:text-gray-400">ເລກທີ: {purchase.reference_no || '-'}</div>
+                  <div className="text-gray-500 dark:text-gray-400">ວັນທີ: {purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString('th-TH') : '-'}</div>
                 </div>
               </div>
               <div className="text-right">
@@ -115,8 +115,8 @@ export default function Print({ purchase, company }: PrintProps) {
                 {company && (
                   <>
                     {company.address && <div className="text-gray-700 dark:text-gray-300">{company.address}</div>}
-                    {company.phone && <div className="text-gray-700 dark:text-gray-300">โทร: {company.phone}</div>}
-                    {company.email && <div className="text-gray-700 dark:text-gray-300">อีเมล: {company.email}</div>}
+                    {company.phone && <div className="text-gray-700 dark:text-gray-300">ໂທ: {company.phone}</div>}
+                    {company.email && <div className="text-gray-700 dark:text-gray-300">ອີເມລ: {company.email}</div>}
                   </>
                 )}
               </div>
@@ -124,7 +124,7 @@ export default function Print({ purchase, company }: PrintProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
-                <h3 className="text-lg font-semibold mb-2">ข้อมูลซัพพลายเออร์</h3>
+                <h3 className="text-lg font-semibold mb-2">ຂໍ້ມູນຊັບພາຍເອີ</h3>
                 {purchase.supplier ? (
                   <>
                     <div className="mb-1">{purchase.supplier.name}</div>
@@ -132,17 +132,17 @@ export default function Print({ purchase, company }: PrintProps) {
                       <div className="mb-1">{purchase.supplier.shop_name}</div>
                     )}
                     <div className="mb-1">{purchase.supplier.address}</div>
-                    <div className="mb-1">โทร: {purchase.supplier.phone}</div>
-                    <div className="mb-1">อีเมล: {purchase.supplier.email}</div>
+                    <div className="mb-1">ໂທ: {purchase.supplier.phone}</div>
+                    <div className="mb-1">ອີເມລ: {purchase.supplier.email}</div>
                   </>
                 ) : (
-                  <div className="mb-1">ไม่มีข้อมูลซัพพลายเออร์</div>
+                  <div className="mb-1">ບໍ່ມີຂໍ້ມູນຊັບພາຍເອີ</div>
                 )}
               </div>
               <div className="text-right">
-                <h3 className="text-lg font-semibold mb-2">สถานะ</h3>
+                <h3 className="text-lg font-semibold mb-2">ສະຖານະ</h3>
                 <div className="mb-1">
-                  <span className="font-medium">สถานะการสั่งซื้อ:</span>{' '}
+                  <span className="font-medium">ສະຖານະການສັ່ງຊື້:</span>{' '}
                   {(() => {
                     // ตรวจสอบว่ามี purchase_status ที่เป็น object และมี value หรือไม่
                     const statusValue = typeof purchase.purchase_status === 'object' && purchase.purchase_status !== null 
@@ -152,11 +152,11 @@ export default function Print({ purchase, company }: PrintProps) {
                     // ดึงค่า label จาก object หรือกำหนดค่า default ตาม value
                     return typeof purchase.purchase_status === 'object' && purchase.purchase_status !== null && purchase.purchase_status.label
                       ? purchase.purchase_status.label
-                      : (statusValue === 0 ? 'รออนุมัติ' : 'อนุมัติแล้ว')
+                      : (statusValue === 0 ? 'ຖ້າອະນຸຍາດ' : 'ອະນຸຍາດແລ້ວ')
                   })()}
                 </div>
                 <div className="mb-1">
-                  <span className="font-medium">สถานะการชำระเงิน:</span>{' '}
+                  <span className="font-medium">ສະຖານະການຈ່າຍເງີນ:</span>{' '}
                   {(() => {
                     // ตรวจสอบว่ามี payment_status ที่เป็น object และมี value หรือไม่
                     const paymentStatusValue = typeof purchase.payment_status === 'object' && purchase.payment_status !== null 
@@ -170,7 +170,7 @@ export default function Print({ purchase, company }: PrintProps) {
                   })()}
                 </div>
                 <div className="mb-1">
-                  <span className="font-medium">วันที่สร้าง:</span>{' '}
+                  <span className="font-medium">ວັນທີສ້າງ:</span>{' '}
                   {purchase.created_at ? new Date(purchase.created_at).toLocaleDateString('th-TH') : '-'}
                 </div>
               </div>
@@ -180,12 +180,12 @@ export default function Print({ purchase, company }: PrintProps) {
               <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700">
                 <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[5%]">ลำดับ</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">รหัสสินค้า</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[30%]">ชื่อสินค้า</th>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[10%]">จำนวน</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ราคาต่อหน่วย</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ราคารวม</th>
+                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[5%]">ລຳດັບ</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ລະຫັດສິນຄ້າ</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[30%]">ຊື່ສິນຄ້າ</th>
+                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[10%]">ຈຳນວນ</th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ລາຄາຕໍ່ໜ່ວຍ</th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-[15%]">ລາຄາລວມ</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -197,52 +197,52 @@ export default function Print({ purchase, company }: PrintProps) {
                         {item.product?.name || '-'}
                         <br />
                         <span className="text-xs text-gray-500 dark:text-gray-400">
-                          หมวดหมู่: {item.product?.category?.name || '-'}
+                          ໝວດໝູ່: {item.product?.category?.name || '-'}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900 dark:text-gray-100">
                         {item.quantity} {item.product?.unit || '-'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900 dark:text-gray-100">
-                        ฿{typeof item.unit_price === 'number' ? (item.unit_price / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                        ₭{typeof item.unit_price === 'number' ? (item.unit_price / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900 dark:text-gray-100">
-                        ฿{typeof item.total_price === 'number' ? (item.total_price / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                        ₭{typeof item.total_price === 'number' ? (item.total_price / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                       </td>
                     </tr>
                   )) : (
                     <tr>
-                      <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">ไม่พบรายการสินค้า</td>
+                      <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">ບໍ່ເຫັນລາຍການສິນຄ້າ</td>
                     </tr>
                   )}
                 </tbody>
                 <tfoot className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ยอดรวมก่อนภาษี</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຍອດລວມກ່ອນພາສີ</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
                       ฿{typeof purchase.subtotal === 'number' ? (purchase.subtotal / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ภาษีมูลค่าเพิ่ม (7%)</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ພາສີມູນຄ່າເພີມ (7%)</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
                       ฿{typeof purchase.vat === 'number' ? (purchase.vat / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ยอดรวมทั้งสิ้น</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຍອດລວມທັງໝົດ</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
-                      ฿{typeof purchase.total_amount === 'number' ? (purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                      ₭{typeof purchase.total_amount === 'number' ? (purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ชำระแล้ว</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຈ່າຍແລ້ວ</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
                       ฿{typeof purchase.paid_amount === 'number' ? (purchase.paid_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
                   </tr>
                   <tr>
-                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ยอดค้างชำระ</th>
+                    <th colSpan={5} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ຍອດຄ້າຈາຍ</th>
                     <th className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">
                       ฿{typeof purchase.due_amount === 'number' ? (purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </th>
@@ -253,30 +253,30 @@ export default function Print({ purchase, company }: PrintProps) {
 
             {purchase.purchase_note && (
               <div className="mt-6">
-                <h4 className="text-lg font-semibold">หมายเหตุ</h4>
+                <h4 className="text-lg font-semibold">ໝາຍເຫດ</h4>
                 <p className="text-gray-700 dark:text-gray-300">{purchase.purchase_note}</p>
               </div>
             )}
 
             <div className="grid grid-cols-3 gap-4 mt-8">
               <div className="text-center">
-                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ลงชื่อผู้สั่งซื้อ</div>
+                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ລົງຊື່ຜູ້ສັ່ງຊື້</div>
               </div>
               <div className="text-center">
-                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ลงชื่อผู้อนุมัติ</div>
+                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ລົງຊື່ຜູ້ອະນຸມັດ</div>
               </div>
               <div className="text-center">
-                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ลงชื่อซัพพลายเออร์</div>
+                <div className="border-t border-gray-300 dark:border-gray-600 pt-2">ລົງຊື່ສັບພາຍເອີ</div>
               </div>
             </div>
 
             <div className="flex flex-col space-y-2">
               <div className="flex justify-between">
-                <span className="font-medium">เลขที่อ้างอิง:</span>
+                <span className="font-medium">ເລກທີອ້າງອິງ:</span>
                 <span>{purchase.reference_no || '-'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-medium">วันที่สั่งซื้อ:</span>
+                <span className="font-medium">ວັນທີສັ່ງຊື້:</span>
                 <span>{purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString('th-TH') : '-'}</span>
               </div>
             </div>

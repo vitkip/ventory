@@ -64,9 +64,9 @@ interface ShowProps extends PageProps {
 
 export default function Show({ auth, purchase }: ShowProps) {
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการสั่งซื้อ', url: route('purchases.index') },
-    { title: purchase.reference_no ? `${purchase.reference_no}` : 'รายละเอียด', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການສັ່ງຊື້', url: route('purchases.index') },
+    { title: purchase.reference_no ? `${purchase.reference_no}` : 'ລາຍລະອຽດ', url: undefined }
   ]
 
   return (
@@ -77,7 +77,7 @@ export default function Show({ auth, purchase }: ShowProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">รายละเอียดการสั่งซื้อ</h2>
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">ລາຍລະອຽດການສັ່ງຊື້</h2>
               </div>
               <div className="flex space-x-3">
                 <Link 
@@ -91,7 +91,7 @@ export default function Show({ auth, purchase }: ShowProps) {
                     <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
                     <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z"></path>
                   </svg>
-                  พิมพ์รายการสั่งซื้อ
+                  ພິມລາຍການສັ່ງຊື້
                 </Link>
 
                 {typeof purchase.purchase_status === 'object' && purchase.purchase_status !== null && purchase.purchase_status.value === 0 && (
@@ -105,7 +105,7 @@ export default function Show({ auth, purchase }: ShowProps) {
                       <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
                       <path d="M16 5l3 3"></path>
                     </svg>
-                    แก้ไขรายการสั่งซื้อ
+                    ແກ້ໄຂລາຍການສັ່ງຊື້
                   </Link>
                 )}
               </div>
@@ -114,7 +114,7 @@ export default function Show({ auth, purchase }: ShowProps) {
         </div>
       }
     >
-      <Head title={`รายการสั่งซื้อ: ${purchase.reference_no || 'รายละเอียด'}`} />
+      <Head title={`ລາຍການສັ່ງຊື້: ${purchase.reference_no || 'ລາຍລະອຽດ'}`} />
 
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -124,51 +124,51 @@ export default function Show({ auth, purchase }: ShowProps) {
             <div className="lg:col-span-4">
               <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">ข้อมูลการสั่งซื้อ</h3>
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">ຂໍ້ມູນການສັ່ງຊື້</h3>
                 </div>
                 <div className="p-6 space-y-3">
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">เลขที่อ้างอิง:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ເລກທີ່ອ້າງອິງ:</span>
                     <span className="text-gray-900 dark:text-gray-100">{purchase.reference_no}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">วันที่สั่งซื้อ:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ວັນທີສັ່ງຊື້:</span>
                     <span className="text-gray-900 dark:text-gray-100">
                       {purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString('th-TH') : '-'}
                     </span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">วันที่บันทึก:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ວັນທີບັນທຶກ:</span>
                     <span className="text-gray-900 dark:text-gray-100">
                       {purchase.created_at ? new Date(purchase.created_at).toLocaleDateString('th-TH') : '-'}
                     </span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ยอดรวมทั้งสิ้น:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຍອດລວມທັງໝົດ:</span>
                     <span className="text-gray-900 dark:text-gray-100">
-                      ฿{typeof purchase.total_amount === 'number' ? (purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                      ₭{typeof purchase.total_amount === 'number' ? (purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ชำระแล้ว:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຈ່າຍແລ້ວ:</span>
                     <span className="text-gray-900 dark:text-gray-100">
-                      ฿{typeof purchase.paid_amount === 'number' ? (purchase.paid_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                      ₭{typeof purchase.paid_amount === 'number' ? (purchase.paid_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                     </span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ค้างชำระ:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຄ້າງຈ່າຍ:</span>
                     {typeof purchase.due_amount === 'number' && purchase.due_amount > 0 ? (
                       <span className="text-red-600 dark:text-red-400">
-                        ฿{(purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}
+                        ₭{(purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}
                       </span>
                     ) : (
                       <span className="text-gray-900 dark:text-gray-100">
-                        ฿{typeof purchase.due_amount === 'number' ? (purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                        ₭{typeof purchase.due_amount === 'number' ? (purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                       </span>
                     )}
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">สถานะการสั่งซื้อ:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ສະຖານະການສັ່ງຊື້:</span>
                     {(() => {
                       // ตรวจสอบว่ามี purchase_status ที่เป็น object และมี value หรือไม่
                       const statusValue = typeof purchase.purchase_status === 'object' && purchase.purchase_status !== null 
@@ -192,7 +192,7 @@ export default function Show({ auth, purchase }: ShowProps) {
                     })()}
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">สถานะการชำระเงิน:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ສະຖານະການຈ່າຍເງີນ:</span>
                     {(() => {
                       // ตรวจสอบว่ามี payment_status ที่เป็น object และมี value หรือไม่
                       const paymentStatusValue = typeof purchase.payment_status === 'object' && purchase.payment_status !== null 
@@ -202,7 +202,7 @@ export default function Show({ auth, purchase }: ShowProps) {
                       // ดึงค่า label จาก object หรือกำหนดค่า default ตาม value
                       const paymentStatusLabel = typeof purchase.payment_status === 'object' && purchase.payment_status !== null 
                         ? purchase.payment_status.label 
-                        : (paymentStatusValue === 0 ? 'ยังไม่ชำระ' : (paymentStatusValue === 1 ? 'ชำระบางส่วน' : 'ชำระแล้ว'))
+                        : (paymentStatusValue === 0 ? 'ຍັງບໍ່ຈ່າຍ' : (paymentStatusValue === 1 ? 'ຈ່າຍບາງສ່ວນ' : 'ຈ່າຍແລ້ວ'))
                       
                       const classes = paymentStatusValue === 0 
                         ? 'bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100' 
@@ -219,7 +219,7 @@ export default function Show({ auth, purchase }: ShowProps) {
                   </div>
                   {purchase.purchase_note && (
                     <div>
-                      <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">หมายเหตุ:</span>
+                      <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ໝາຍເຫດ:</span>
                       <p className="text-gray-900 dark:text-gray-100">{purchase.purchase_note}</p>
                     </div>
                   )}
@@ -230,25 +230,25 @@ export default function Show({ auth, purchase }: ShowProps) {
             <div className="lg:col-span-8">
               <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">ข้อมูลซัพพลายเออร์</h3>
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">ຂໍ້ມູນຊັບພາຍເອີ</h3>
                 </div>
                 <div className="p-6 space-y-3">
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ชื่อ:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຊື່:</span>
                     <Link href={route('suppliers.show', purchase.supplier_id)} className="text-blue-600 hover:text-blue-800 hover:underline">
                       {purchase.supplier.name}
                     </Link>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">อีเมล:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ອີເມລ:</span>
                     <a href={`mailto:${purchase.supplier.email}`} className="text-blue-600 hover:text-blue-800 hover:underline">{purchase.supplier.email}</a>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">เบอร์โทรศัพท์:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ເບີໂທລະສັບ:</span>
                     <span className="text-gray-900 dark:text-gray-100">{purchase.supplier.phone}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ที่อยู่:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ທີ່ຢູ່:</span>
                     <span className="text-gray-900 dark:text-gray-100">{purchase.supplier.address}</span>
                   </div>
                 </div>
@@ -258,20 +258,20 @@ export default function Show({ auth, purchase }: ShowProps) {
             <div className="lg:col-span-12">
               <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">รายการสินค้าที่สั่งซื้อ</h3>
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">ລາຍການສິນຄ້າທີ່ສັ່ງຊື້</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead className="bg-gray-50 dark:bg-gray-700">
                       <tr>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ลำดับ</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">รหัสสินค้า</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ชื่อสินค้า</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">หมวดหมู่</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">หน่วย</th>
-                        <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">จำนวน</th>
-                        <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ราคา/หน่วย</th>
-                        <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">รวม</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລຳດັບ</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລະຫັດສິນຄ້າ</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ຊື່ສິນຄ້າ</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ໝວດໝູ່</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ໜ່ວຍ</th>
+                        <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ຈຳນວນ</th>
+                        <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລາຄາ/ໜ່ວຍ</th>
+                        <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ລວມ</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -287,22 +287,22 @@ export default function Show({ auth, purchase }: ShowProps) {
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{item.product.category.name}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{item.product.unit.short_code}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-500 dark:text-gray-400">{item.quantity}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-500 dark:text-gray-400">฿{(item.unit_price / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-500 dark:text-gray-400">฿{(item.sub_total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-500 dark:text-gray-400">₭{(item.unit_price / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-500 dark:text-gray-400">₭{(item.sub_total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</td>
                         </tr>
                       ))}
                     </tbody>
                     <tfoot className="bg-gray-50 dark:bg-gray-700">
                       <tr>
-                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">ยอดรวมทั้งสิ้น</th>
+                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">ຍອດລວມທັງໝົດ</th>
                         <th className="px-6 py-3 text-right text-sm text-gray-900 dark:text-gray-100">
-                          ฿{typeof purchase.total_amount === 'number' ? (purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                          ₭{typeof purchase.total_amount === 'number' ? (purchase.total_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                         </th>
                       </tr>
                       <tr>
-                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">ชำระแล้ว</th>
+                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">ຈ່າຍແລ້ວ</th>
                         <th className="px-6 py-3 text-right text-sm text-gray-900 dark:text-gray-100">
-                          ฿{typeof purchase.paid_amount === 'number' ? (purchase.paid_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                          ₭{typeof purchase.paid_amount === 'number' ? (purchase.paid_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                         </th>
                       </tr>
                       <tr>
@@ -310,11 +310,11 @@ export default function Show({ auth, purchase }: ShowProps) {
                         <th className="px-6 py-3 text-right text-sm">
                           {typeof purchase.due_amount === 'number' && purchase.due_amount > 0 ? (
                             <span className="text-red-600 dark:text-red-400">
-                              ฿{(purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}
+                              ₭{(purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}
                             </span>
                           ) : (
                             <span className="text-gray-900 dark:text-gray-100">
-                              ฿{typeof purchase.due_amount === 'number' ? (purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
+                              ₭{typeof purchase.due_amount === 'number' ? (purchase.due_amount / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 }) : '0.00'}
                             </span>
                           )}
                         </th>
