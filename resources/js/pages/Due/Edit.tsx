@@ -42,10 +42,10 @@ export default function Edit({ auth, order }: EditProps) {
   const maxAmount = order.due / 100
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการค้างชำระ', url: route('due.index') },
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການຄ້າງຈ່າຍ', url: route('due.index') },
     { title: order.invoice_no, url: route('due.show', order.id) },
-    { title: 'ชำระเงิน', url: undefined }
+    { title: 'ຈ່າຍເງີນ', url: undefined }
   ]
 
   const handleSubmit = (e: FormEvent) => {
@@ -59,12 +59,12 @@ export default function Edit({ auth, order }: EditProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ชำระเงินค้างชำระ</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ຈ່າຍເງີນຄ້າງຈ່າຍ</h2>
           </div>
         </div>
       }
     >
-      <Head title={`ชำระเงินค้างชำระ: ${order.invoice_no}`} />
+      <Head title={`ຈ່າຍເງີນຄ້າງຈ່າຍ: ${order.invoice_no}`} />
 
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -74,34 +74,34 @@ export default function Edit({ auth, order }: EditProps) {
             <div className="lg:col-span-4">
               <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลการสั่งซื้อ</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນການສັ່ງຊື້</h3>
                 </div>
                 <div className="p-6 space-y-3">
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">เลขที่ใบแจ้งหนี้:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ເລກທີໃບແຈ້ງໜີ້:</span>
                     <span className="text-gray-900 dark:text-gray-100">{order.invoice_no}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">วันที่สั่งซื้อ:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ວັນທີສັ່ງຊື້:</span>
                     <span className="text-gray-900 dark:text-gray-100">{new Date(order.order_date).toLocaleDateString('th-TH')}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ลูกค้า:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ລູກຄ້າ:</span>
                     <Link href={route('customers.show', order.customer_id)} className="text-blue-600 hover:text-blue-800 hover:underline">
                       {order.customer.name}
                     </Link>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ยอดรวมทั้งสิ้น:</span>
-                    <span className="text-gray-900 dark:text-gray-100">฿{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຍອດລວມທັງໝົດ:</span>
+                    <span className="text-gray-900 dark:text-gray-100">₭{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ชำระแล้ว:</span>
-                    <span className="text-gray-900 dark:text-gray-100">฿{(order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຈ່າຍແລ້ວ:</span>
+                    <span className="text-gray-900 dark:text-gray-100">₭{(order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ยอดค้างชำระ:</span>
-                    <span className="text-red-600 dark:text-red-400">฿{(order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຍອດຄ້າງຈ່າຍ:</span>
+                    <span className="text-red-600 dark:text-red-400">₭{(order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
                   </div>
                 </div>
               </div>
@@ -111,16 +111,16 @@ export default function Edit({ auth, order }: EditProps) {
               <form onSubmit={handleSubmit}>
                 <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                   <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ชำระเงิน</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຈ່າຍເງີນ</h3>
                   </div>
                   <div className="p-6">
                     <div className="mb-6">
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="pay">
-                        จำนวนเงินที่ต้องการชำระ <span className="text-red-500">*</span>
+                        ຈຳນວນເງີນທີ່ຕ້ອງຈ່າຍ <span className="text-red-500">*</span>
                       </label>
                       <div className="relative rounded-md shadow-sm">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <span className="text-gray-500 sm:text-sm">฿</span>
+                          <span className="text-gray-500 sm:text-sm">₭</span>
                         </div>
                         <input
                           id="pay"
@@ -132,12 +132,12 @@ export default function Edit({ auth, order }: EditProps) {
                           min="0.01"
                           max={maxAmount}
                           step="0.01"
-                          placeholder={`ยอดค้างชำระทั้งหมด ${maxAmount.toLocaleString('th-TH', { minimumFractionDigits: 2 })} บาท`}
+                          placeholder={`ຍອດຄ້າງຊຳລະທັງໝົດ ${maxAmount.toLocaleString('th-TH', { minimumFractionDigits: 2 })} บาท`}
                         />
                         {errors.pay && <p className="mt-2 text-sm text-red-600">{errors.pay}</p>}
                       </div>
                       <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                        ระบุจำนวนเงินที่ต้องการชำระ (สูงสุด {maxAmount.toLocaleString('th-TH', { minimumFractionDigits: 2 })} บาท)
+                       ບອກຈຳນວນເງີນທີ່ຕ້ອງການຈາຍ(ສູງສຸດ {maxAmount.toLocaleString('th-TH', { minimumFractionDigits: 2 })} บาท)
                       </p>
                     </div>
                     
@@ -146,14 +146,14 @@ export default function Edit({ auth, order }: EditProps) {
                         href={route('due.show', order.id)} 
                         className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
                       >
-                        ยกเลิก
+                        ຍົກເລີກ 
                       </Link>
                       <button 
                         type="submit" 
                         className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
                         disabled={processing || data.pay <= 0 || data.pay > maxAmount}
                       >
-                        {processing ? 'กำลังบันทึก...' : 'บันทึกการชำระเงิน'}
+                        {processing ? 'ກຳລັງບັນທຶກ...' : 'ບັນທຶກການຊຳລະເງີນ'}
                       </button>
                     </div>
                   </div>

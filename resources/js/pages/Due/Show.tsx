@@ -58,8 +58,8 @@ interface ShowProps extends PageProps {
 
 export default function Show({ auth, order }: ShowProps) {
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการค้างชำระ', url: route('due.index') },
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການຄ້າງຊຳລະ', url: route('due.index') },
     { title: order.invoice_no, url: undefined }
   ]
 
@@ -71,7 +71,7 @@ export default function Show({ auth, order }: ShowProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">รายละเอียดรายการค้างชำระ</h2>
+                <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ລາຍລະອຽດລາຍການຄ້າງຊຳລະ</h2>
               </div>
               <div className="flex space-x-2">
                 <Link 
@@ -85,7 +85,7 @@ export default function Show({ auth, order }: ShowProps) {
                     <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
                     <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z"></path>
                   </svg>
-                  พิมพ์ใบเสร็จ
+                  ພິມໄບເສັດ
                 </Link>
 
                 <Link 
@@ -98,7 +98,7 @@ export default function Show({ auth, order }: ShowProps) {
                     <path d="M14 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
                     <path d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2"></path>
                   </svg>
-                  ชำระเงิน
+                  ຈ່າຍເງີນ
                 </Link>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function Show({ auth, order }: ShowProps) {
         </div>
       }
     >
-      <Head title={`รายการค้างชำระ: ${order.invoice_no}`} />
+      <Head title={`ລາຍການຊຳລະ: ${order.invoice_no}`} />
 
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -116,45 +116,45 @@ export default function Show({ auth, order }: ShowProps) {
             <div className="lg:col-span-4">
               <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลการสั่งซื้อ</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນການສັ່ງຊື້</h3>
                 </div>
                 <div className="p-6 space-y-3">
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">เลขที่ใบแจ้งหนี้:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ເລກທີໃບແຈ້ງໜີ້:</span>
                     <span className="text-gray-900 dark:text-gray-100">{order.invoice_no}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">วันที่สั่งซื้อ:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ວັນທີສັ່ງຊື້:</span>
                     <span className="text-gray-900 dark:text-gray-100">{new Date(order.order_date).toLocaleDateString('th-TH')}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">จำนวนสินค้า:</span>
-                    <span className="text-gray-900 dark:text-gray-100">{order.total_products} รายการ</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຈຳນວນສິນຄ້າ:</span>
+                    <span className="text-gray-900 dark:text-gray-100">{order.total_products} ລາຍການ</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ราคารวม:</span>
-                    <span className="text-gray-900 dark:text-gray-100">฿{(order.sub_total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ລາຄາລວມ:</span>
+                    <span className="text-gray-900 dark:text-gray-100">₭{(order.sub_total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ภาษี (7%):</span>
-                    <span className="text-gray-900 dark:text-gray-100">฿{(order.vat / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ພາສີ (7%):</span>
+                    <span className="text-gray-900 dark:text-gray-100">₭{(order.vat / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ยอดรวมทั้งสิ้น:</span>
-                    <span className="text-gray-900 dark:text-gray-100">฿{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຍອດລວມທັງໝົດ:</span>
+                    <span className="text-gray-900 dark:text-gray-100">₭{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ชำระแล้ว:</span>
-                    <span className="text-gray-900 dark:text-gray-100">฿{(order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຈ່າຍແລ້ວ:</span>
+                    <span className="text-gray-900 dark:text-gray-100">₭{(order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ค้างชำระ:</span>
-                    <span className="text-red-600 dark:text-red-400">฿{(order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຄ້າງຈ່າຍ:</span>
+                    <span className="text-red-600 dark:text-red-400">₭{(order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">สถานะ:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ສະຖານະ:</span>
                     <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-md ${order.order_status === 0 ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100' : 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100'}`}>
-                      {order.order_status === 0 ? 'รอดำเนินการ' : 'เสร็จสิ้น'}
+                      {order.order_status === 0 ? 'ຖ້າດຳເນີນການ' : 'ສຳເລັດແລ້ວ'}
                     </span>
                   </div>
                 </div>
@@ -164,25 +164,25 @@ export default function Show({ auth, order }: ShowProps) {
             <div className="lg:col-span-8">
               <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ข้อมูลลูกค้า</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ຂໍ້ມູນລູກຄ້າ</h3>
                 </div>
                 <div className="p-6 space-y-3">
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ชื่อ:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ຊື່:</span>
                     <Link href={route('customers.show', order.customer_id)} className="text-blue-600 hover:text-blue-800 hover:underline">
                       {order.customer.name}
                     </Link>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">อีเมล:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ອີເມລ:</span>
                     <a href={`mailto:${order.customer.email}`} className="text-blue-600 hover:text-blue-800 hover:underline">{order.customer.email}</a>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">เบอร์โทรศัพท์:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ເບີໂທລະສັບ:</span>
                     <span className="text-gray-900 dark:text-gray-100">{order.customer.phone}</span>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ที่อยู่:</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300 mr-1">ທີ່ຢູ່:</span>
                     <span className="text-gray-900 dark:text-gray-100">{order.customer.address}</span>
                   </div>
                 </div>
@@ -192,20 +192,20 @@ export default function Show({ auth, order }: ShowProps) {
             <div className="lg:col-span-12">
               <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">รายการสินค้า</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">ລາຍການສິນຄ້າ</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead className="bg-gray-50 dark:bg-gray-700">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-1">ลำดับ</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">รหัสสินค้า</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ชื่อสินค้า</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">หมวดหมู่</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">หน่วย</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">จำนวน</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ราคา/หน่วย</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">รวม</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-1">ລຳດັບ</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລະຫັດສິນຄ້າ</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຊື່ສິນຄ້າ</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ໝວດໝູ່</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຫົວໜ່ວຍ</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ຈຳນວນ</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລາຄາ/ໜ່ວຍ</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ລວມ</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -221,31 +221,31 @@ export default function Show({ auth, order }: ShowProps) {
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{item.product.category.name}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{item.product.unit.short_code}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">{item.quantity}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">฿{(item.unitcost / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">฿{(item.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">₭{(item.unitcost / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 dark:text-gray-100">₭{(item.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</td>
                         </tr>
                       ))}
                     </tbody>
                     <tfoot className="bg-gray-50 dark:bg-gray-700">
                       <tr>
-                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ราคารวม</th>
-                        <th className="px-6 py-3 text-right text-sm text-gray-900 dark:text-gray-100">฿{(order.sub_total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
+                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ລາຄາລວມ</th>
+                        <th className="px-6 py-3 text-right text-sm text-gray-900 dark:text-gray-100">₭{(order.sub_total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
                       </tr>
                       <tr>
-                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ภาษี (7%)</th>
-                        <th className="px-6 py-3 text-right text-sm text-gray-900 dark:text-gray-100">฿{(order.vat / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
+                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-medium text-gray-900 dark:text-gray-100">ພາສີ (7%)</th>
+                        <th className="px-6 py-3 text-right text-sm text-gray-900 dark:text-gray-100">₭{(order.vat / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
                       </tr>
                       <tr>
-                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-bold text-gray-900 dark:text-gray-100">ยอดรวมทั้งสิ้น</th>
-                        <th className="px-6 py-3 text-right text-sm font-bold text-gray-900 dark:text-gray-100">฿{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
+                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-bold text-gray-900 dark:text-gray-100">ຍອດລວມທັງສິນ</th>
+                        <th className="px-6 py-3 text-right text-sm font-bold text-gray-900 dark:text-gray-100">₭{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
                       </tr>
                       <tr>
-                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-medium text-green-600 dark:text-green-400">ชำระแล้ว</th>
-                        <th className="px-6 py-3 text-right text-sm text-green-600 dark:text-green-400">฿{(order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
+                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-medium text-green-600 dark:text-green-400">ຈ່າຍແລ້ວ</th>
+                        <th className="px-6 py-3 text-right text-sm text-green-600 dark:text-green-400">₭{(order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
                       </tr>
                       <tr>
-                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-medium text-red-600 dark:text-red-400">ค้างชำระ</th>
-                        <th className="px-6 py-3 text-right text-sm text-red-600 dark:text-red-400">฿{(order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
+                        <th colSpan={7} className="px-6 py-3 text-right text-sm font-medium text-red-600 dark:text-red-400">ຄ້າງຈ່າຍ</th>
+                        <th className="px-6 py-3 text-right text-sm text-red-600 dark:text-red-400">₭{(order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</th>
                       </tr>
                     </tfoot>
                   </table>

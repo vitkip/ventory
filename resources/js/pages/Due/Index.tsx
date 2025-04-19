@@ -50,7 +50,7 @@ export default function Index({ auth, orders, filters }: DueOrdersProps) {
   const columns = [
     {
       field: 'invoice_no',
-      label: 'เลขที่ใบแจ้งหนี้',
+      label: 'ເລກທີໃບແຈ້ງໜີ້',
       sortable: true,
       render: (order: Order) => (
         <Link href={route('due.show', order.id)} className="text-blue-600 hover:text-blue-800 hover:underline">
@@ -60,7 +60,7 @@ export default function Index({ auth, orders, filters }: DueOrdersProps) {
     },
     {
       field: 'customer.name',
-      label: 'ลูกค้า',
+      label: 'ລູກຄ້າ',
       sortable: true,
       render: (order: Order) => (
         <Link href={route('customers.show', order.customer_id)} className="text-blue-600 hover:text-blue-800 hover:underline">
@@ -70,7 +70,7 @@ export default function Index({ auth, orders, filters }: DueOrdersProps) {
     },
     {
       field: 'order_date',
-      label: 'วันที่',
+      label: 'ວັນທີ',
       sortable: true,
       render: (order: Order) => (
         <span>{new Date(order.order_date).toLocaleDateString('th-TH')}</span>
@@ -78,31 +78,31 @@ export default function Index({ auth, orders, filters }: DueOrdersProps) {
     },
     {
       field: 'total',
-      label: 'ยอดรวม',
+      label: 'ຍອດລວມ',
       sortable: true,
       render: (order: Order) => (
-        <span>฿{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+        <span>₭{(order.total / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
       )
     },
     {
       field: 'pay',
-      label: 'ชำระแล้ว',
+      label: 'ຈ່າຍແລ້ວ',
       sortable: true,
       render: (order: Order) => (
-        <span>฿{(order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+        <span>₭{(order.pay / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
       )
     },
     {
       field: 'due',
-      label: 'ค้างชำระ',
+      label: 'ຄ້າງຈ່າຍ',
       sortable: true,
       render: (order: Order) => (
-        <span className="text-red-600 dark:text-red-400">฿{(order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
+        <span className="text-red-600 dark:text-red-400">₭{(order.due / 100).toLocaleString('th-TH', { minimumFractionDigits: 2 })}</span>
       )
     },
     {
       field: 'actions',
-      label: 'จัดการ',
+      label: 'ຈັດການ',
       className: 'w-1',
       render: (order: Order) => (
         <div className="flex space-x-2">
@@ -110,13 +110,13 @@ export default function Index({ auth, orders, filters }: DueOrdersProps) {
             href={route('due.show', order.id)} 
             className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
           >
-            ดู
+            ເບີ່ງ
           </Link>
           <Link 
             href={route('due.edit', order.id)} 
             className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-700 dark:text-blue-100 dark:hover:bg-blue-600"
           >
-            ชำระเงิน
+            ຈ່າຍເງີນ
           </Link>
         </div>
       )
@@ -179,8 +179,8 @@ export default function Index({ auth, orders, filters }: DueOrdersProps) {
   }
 
   const breadcrumbsItems = [
-    { title: 'หน้าหลัก', url: route('dashboard') },
-    { title: 'รายการค้างชำระ', url: undefined }
+    { title: 'ໜ້າຫຼັກ', url: route('dashboard') },
+    { title: 'ລາຍການຄ້າງຊຳລະ', url: undefined }
   ]
 
   return (
@@ -189,13 +189,13 @@ export default function Index({ auth, orders, filters }: DueOrdersProps) {
       header={
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-gray-500 dark:text-gray-400">รายการ</div>
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">รายการค้างชำระ</h1>
+            <div className="text-sm text-gray-500 dark:text-gray-400">ລາຍການ</div>
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">ລາຍການຄ້າງຊຳລະ</h1>
           </div>
         </div>
       }
     >
-      <Head title="รายการค้างชำระ" />
+      <Head title="ລາຍການຄ້າງຊຳລະ" />
       
       <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -211,7 +211,7 @@ export default function Index({ auth, orders, filters }: DueOrdersProps) {
             sortField={filters.field}
             sortDirection={filters.direction}
             loading={loading}
-            title="รายการค้างชำระ"
+            title="ລາຍການຄ້າງຊຳລະ"
           />
         </div>
       </div>

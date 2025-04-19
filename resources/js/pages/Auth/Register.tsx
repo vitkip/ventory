@@ -57,7 +57,7 @@ export default function Register() {
 
         {/* ชื่อ */}
         <div>
-          <InputLabel htmlFor="name" value="ชื่อ" />
+          <InputLabel htmlFor="name" value="ຊື່" />
           <TextInput
             id="name"
             name="name"
@@ -71,7 +71,7 @@ export default function Register() {
 
         {/* อีเมล */}
         <div className="mt-4">
-          <InputLabel htmlFor="email" value="อีเมล" />
+          <InputLabel htmlFor="email" value="ອີເມລ" />
           <TextInput
             id="email"
             type="text"
@@ -85,7 +85,7 @@ export default function Register() {
 
         {/* ชื่อผู้ใช้งาน */}
         <div className="mt-4">
-          <InputLabel htmlFor="username" value="ชื่อผู้ใช้งาน" />
+          <InputLabel htmlFor="username" value="ຊື່ຜູ້ໃຊ້" />
           <TextInput
             id="username"
             type="text"
@@ -99,7 +99,7 @@ export default function Register() {
 
         {/* รหัสผ่าน */}
         <div className="mt-4">
-          <InputLabel htmlFor="password" value="รหัสผ่าน" />
+          <InputLabel htmlFor="password" value="ລະຫັດຜ່ານ" />
           <TextInput
             id="password"
             type="password"
@@ -112,7 +112,7 @@ export default function Register() {
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="password_confirmation" value="ยืนยันรหัสผ่าน" />
+          <InputLabel htmlFor="password_confirmation" value="ຢືນຍັນລະຫັດຜ່ານ" />
           <TextInput
             id="password_confirmation"
             type="password"
@@ -135,8 +135,8 @@ export default function Register() {
               className="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
             />
             <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
-              ยอมรับ <a href="/terms-of-service" className="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">
-                ข้อกำหนดและเงื่อนไขการใช้งาน
+              ຍອມຮັບ <a href="/terms-of-service" className="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">
+                ຂໍ້ກຳໜົດແລະເງື່ອນໄຂການໃຊ້ງານ
               </a>
             </span>
           </label>
@@ -148,7 +148,7 @@ export default function Register() {
             href={route('login')}
             className="text-sm text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4"
           >
-            มีบัญชีอยู่แล้ว?
+           ມີບັນຊີຢູ່ແລ້ວ?
           </Link>
 
           <button
@@ -156,7 +156,7 @@ export default function Register() {
             className="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ml-4 hover:cursor-pointer"
             disabled={processing}
           >
-            ลงทะเบียน
+            ລົງທະບຽນ
           </button>
         </div>
 

@@ -34,11 +34,11 @@ class RegisterRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => 'ชื่อ',
-            'username' => 'ชื่อผู้ใช้',
-            'email' => 'อีเมล',
-            'password' => 'รหัสผ่าน',
-            'terms-of-service' => 'ข้อกำหนดและเงื่อนไขการใช้งาน',
+            'name' => 'ຊື່',
+            'username' => 'ຊື່ຜູ້ໃຊ້',
+            'email' => 'ອີເມລ',
+            'password' => 'ລະຫັດຜ່ານ',
+            'terms-of-service' => 'ຂໍ້ກຳນົດແລະເງື່ອນໄຂການໃຊ້ງານ',
         ];
     }
 
@@ -46,7 +46,7 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'terms-of-service.accepted' => 'คุณต้องยอมรับข้อกำหนดและเงื่อนไขการใช้งาน',
+            'terms-of-service.accepted' => 'ເຈົ້າຕ້ອງຍອມຮັບຂໍ້ກຳໜົດແລະເງື່ອນໄຂການໃຊ້ງານ',
         ];
     }
 }

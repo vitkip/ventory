@@ -38,7 +38,7 @@ export default function Login({ status }: { status?: string }) {
     <GuestLayout>
 
         <Head>
-            <title>เข้าสู่ระบบ</title>
+            <title>ເຂົ້າສູ່ລະບົບ</title>
             <meta name="description" content="Login page description" />
         </Head>
 
@@ -51,7 +51,7 @@ export default function Login({ status }: { status?: string }) {
         <form onSubmit={submit} method='POST'>
 
           <div>
-            <InputLabel htmlFor="email" value="อีเมล" />
+            <InputLabel htmlFor="email" value="ອີເມລ" />
             <TextInput
               id="email"
               type="text"
@@ -64,7 +64,7 @@ export default function Login({ status }: { status?: string }) {
           </div>
 
           <div className="mt-4">
-            <InputLabel htmlFor="password" value="รหัสผ่าน" />
+            <InputLabel htmlFor="password" value="ລະຫັດຜ່ານ" />
             <TextInput
               id="password"
               type="password"
@@ -85,14 +85,14 @@ export default function Login({ status }: { status?: string }) {
                 onChange={(e) => setData('remember', e.target.checked)}
                 className="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
               />
-              <span className="ml-2 text-sm text-gray-600 dark:text-gray-400 dark:hover:text-gray-300">จดจำฉัน</span>
+              <span className="ml-2 text-sm text-gray-600 dark:text-gray-400 dark:hover:text-gray-300">ຈົດຈຳຂ້ອຍ</span>
             </label>
 
             <Link
               href={route('password.request')}
               className="text-sm text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                ลืมรหัสผ่าน?
+                ລືມລະຫັດຜ່ານ?
               </Link>
           </div>
 
@@ -101,7 +101,7 @@ export default function Login({ status }: { status?: string }) {
                 href={route('register')}
                 className="text-sm text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4"
               >
-              ลงทะเบียน
+              ລົງທະບຽນ
             </Link>
 
             <button
@@ -109,7 +109,7 @@ export default function Login({ status }: { status?: string }) {
               className="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ml-4 hover:cursor-pointer"
               disabled={processing}
             >
-              เข้าสู่ระบบ
+              ເຂົ້າສູ່ລະບົບ
             </button>
           </div>
 
